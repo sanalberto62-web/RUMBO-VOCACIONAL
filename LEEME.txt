@@ -1,0 +1,8 @@
+RUMBO VOCACIONAL - paquete de publicación web
+
+1. El archivo index.html es la aplicación principal.
+2. Para GitHub Pages, crea un repositorio público y sube index.html a la raíz.
+3. En Settings > Pages, selecciona Deploy from a branch, rama main y carpeta /(root), y guarda.
+4. GitHub mostrará la URL pública cuando termine la publicación.
+
+Antes de compartir: prueba la URL en modo incógnito y en un celular Android. Este prototipo procesa las respuestas localmente; no agregues datos personales identificables ni prometas almacenamiento o seguimiento centralizado.
