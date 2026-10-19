@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidades de concentración | RUMBO CIENCIAS</title>
+<meta name="theme-color" content="#123D32">
+<style>
+:root{--bg:#07111f;--panel:#101f33;--panel2:#142943;--ink:#edf5ff;--muted:#a9bed5;--cyan:#53e0df;--blue:#69a9ff;--gold:#ffd166;--pink:#ff8fab;--green:#8be0a4;--line:#2a4563}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#173b59 0,transparent 34%),var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{padding:30px max(18px,calc((100% - 1180px)/2));background:linear-gradient(120deg,#102f4c,#0a1728 70%);border-bottom:1px solid var(--line)}
+.kicker{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem}.hero{display:grid;grid-template-columns:1.5fr .8fr;gap:24px;align-items:center}
+h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.1;margin:.5rem 0 1rem}h2{font-size:1.65rem;margin:.2rem 0 1rem}h3{margin:.2rem 0 .55rem;color:#dff7ff}p{margin:.45rem 0 .8rem}.muted{color:var(--muted)}.credit{font-size:.9rem;color:#bfd2e7;margin-top:1.2rem}
+.hero-art{min-height:210px;display:grid;place-items:center;border:1px solid #2c5b79;border-radius:24px;background:linear-gradient(145deg,#10334c,#0c1c2f);padding:16px}
+.bubbles{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}.bubble{border-radius:50%;display:grid;place-items:center;font-weight:800;box-shadow:inset -7px -9px 16px #07111f55,0 8px 20px #0004;border:1px solid #ffffff40}.b1{width:72px;height:72px;background:#4bd4d0;color:#05252c}.b2{width:54px;height:54px;background:#69a9ff;color:#071a31}.b3{width:44px;height:44px;background:#ffd166;color:#332400}
+nav{position:sticky;top:0;z-index:10;background:#081522f2;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;gap:7px;overflow-x:auto;padding:10px max(12px,calc((100% - 1180px)/2))}
+nav button{white-space:nowrap;background:transparent;border:1px solid transparent;color:var(--muted);padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:700}nav button.active,nav button:hover{background:#173a55;color:var(--cyan);border-color:#2b6682}
+main{max-width:1180px;margin:0 auto;padding:24px 18px 60px}.tab{display:none}.tab.active{display:block;animation:fade .22s ease}@keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:linear-gradient(150deg,#12253b,#0d1b2c);border:1px solid var(--line);border-radius:18px;padding:19px;min-width:0}.card p:last-child{margin-bottom:0}.tag{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:4px 9px;background:#173d54;color:var(--cyan);margin-bottom:7px}.formula{background:#06111d;border:1px solid #274a65;border-radius:12px;padding:12px 15px;margin:10px 0;color:#b8f8f4;font-size:1.08rem;overflow-x:auto}.callout{border-left:4px solid var(--gold);padding:10px 14px;background:#2d2a1c55;border-radius:0 10px 10px 0;margin:12px 0}.good{border-left-color:var(--green)}.warn{border-left-color:var(--pink)}.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;margin:10px 0;padding:10px 12px 10px 48px;background:#0a1929;border:1px solid #213a55;border-radius:12px;position:relative}.steps li:before{content:counter(step);position:absolute;left:12px;top:10px;width:25px;height:25px;display:grid;place-items:center;border-radius:8px;background:#1a5368;color:var(--cyan);font-weight:900}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.94rem}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--cyan);background:#0b1a2a}tr:hover td{background:#142940}
+label{display:block;color:#c9daec;font-weight:700;font-size:.9rem;margin:9px 0 5px}input,select,textarea{width:100%;background:#071522;border:1px solid #34516e;border-radius:9px;padding:10px 11px;color:var(--ink);font:inherit}input:focus,select:focus,textarea:focus{outline:2px solid #53e0df66;border-color:var(--cyan)}button.primary,button.secondary,button.danger{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;margin:6px 5px 3px 0}button.primary{background:var(--cyan);color:#06232a}button.secondary{background:#25425f;color:#e8f5ff;border:1px solid #3d6286}button.danger{background:#6d263b;color:#fff}button:disabled{opacity:.45;cursor:not-allowed}.result{background:#061522;border:1px solid #2c6075;border-radius:12px;padding:14px;margin-top:12px;min-height:48px}.big{font-size:1.65rem;color:var(--cyan);font-weight:900}.pill{display:inline-block;padding:3px 8px;border-radius:7px;background:#18354c;color:#d8efff;margin:2px}.meter{height:10px;border-radius:999px;background:#1d3044;overflow:hidden}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));width:0%}.question{border:1px solid var(--line);border-radius:15px;padding:16px;margin:12px 0;background:#0d1c2d}.option{display:block;padding:9px 11px;border:1px solid #2b4661;border-radius:9px;margin:7px 0;cursor:pointer}.option:hover{background:#193149}.feedback{margin-top:8px;font-weight:700}.hidden{display:none!important}.small{font-size:.86rem}.footer{text-align:center;border-top:1px solid var(--line);padding:24px;color:var(--muted)}.sim{display:flex;gap:8px;align-items:end;flex-wrap:wrap}.sim>div{flex:1;min-width:130px}
+@media(max-width:760px){.hero,.grid,.grid.three{grid-template-columns:1fr}.hero-art{min-height:140px}header{padding:24px 18px}nav{padding:8px}main{padding:18px 12px 45px}table{font-size:.85rem}th,td{padding:7px}}
+
+
+/* === RUMBO EDUCA unified chrome === */
+.rumbo-topbar{background:#123D32;color:#e9f1eb;font-size:.78rem;text-align:center;padding:7px 12px;letter-spacing:.02em}
+.rumbo-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e2e7e1;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.rumbo-nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rumbo-brand{display:flex;align-items:center;gap:10px;color:#123D32;text-decoration:none;font-weight:800;font-size:.95rem}
+.rumbo-brand .mark{width:34px;height:34px;border-radius:10px;background:#123D32;color:#f4e6bd;display:grid;place-items:center;font-size:.95rem;flex-shrink:0}
+.rumbo-brand .tag{display:block;font-size:.58rem;font-weight:650;color:#637169;letter-spacing:.1em;margin-top:2px}
+.rumbo-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rumbo-links a{text-decoration:none;color:#3f5148;font-size:.82rem;font-weight:650;padding:7px 11px;border-radius:999px;border:1px solid transparent}
+.rumbo-links a:hover{color:#123D32;background:#e8f0eb}
+.rumbo-links a.primary{background:#123D32;color:#fff;border-color:#123D32}
+.rumbo-links a.primary:hover{background:#1e5a49;color:#fff}
+.rumbo-foot{background:#0c2d25;color:#b8c9be;padding:18px 16px;text-align:center;font-size:.8rem;font-family:Inter,ui-sans-serif,system-ui,sans-serif;margin-top:32px}
+.rumbo-foot a{color:#e9f1eb;text-decoration:none;margin:0 8px;font-weight:650}
+.rumbo-foot a:hover{text-decoration:underline}
+.rumbo-foot .sub{opacity:.75;margin-top:6px;font-size:.72rem}
+@media(max-width:640px){
+  .rumbo-links a:not(.primary){display:none}
+  .rumbo-brand span:not(.mark){font-size:.85rem}
+}
+
+</style>
+</head>
+<body>
+
+<div class="rumbo-topbar">RUMBO EDUCA · Laboratorio de aprendizaje y orientación · OAKTREESKY</div>
+<nav class="rumbo-nav" aria-label="Navegación RUMBO">
+  <div class="rumbo-nav-inner">
+    <a class="rumbo-brand" href="index.html">
+      <span class="mark" aria-hidden="true">⚗</span>
+      <span>RUMBO CIENCIAS<span class="tag">QUÍMICA · DÉCIMO Y UNDÉCIMO</span></span>
+    </a>
+    <div class="rumbo-links">
+      <a href="../index.html">Inicio</a>
+      <a href="index.html">Catálogo</a>
+      <a href="../resiliencia/">Resiliencia</a>
+      <a href="../orientacion/">Vocacional</a>
+      <a class="primary" href="index.html">← Guías</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+ <div class="hero">
+  <div>
+   <div class="kicker">Química · laboratorio interactivo</div>
+   <h1>Soluciones químicas y unidades de concentración</h1>
+   <p class="muted">De los conceptos fundamentales a los cálculos cuantitativos: composición, tipos de soluciones, preparación, dilución y unidades de concentración con ejemplos resueltos.</p>
+   <div class="credit">Dirección del proyecto: <strong>Alberto Luis Sánchez Flórez</strong></div>
+  </div>
+  <div class="hero-art"><div class="bubbles"><div class="bubble b1">H₂O</div><div class="bubble b2">Na⁺</div><div class="bubble b3">Cl⁻</div><div style="width:100%;text-align:center;color:#c6e3f7;font-weight:700">Soluto + solvente → solución homogénea</div></div></div>
+ </div>
+</header>
+<nav id="nav">
+ <button class="active" data-tab="inicio">Inicio</button><button data-tab="conceptos">Conceptos y clases</button><button data-tab="unidades">Unidades de concentración</button><button data-tab="ejemplos">Ejemplos resueltos</button><button data-tab="laboratorio">Calculadora</button><button data-tab="evaluacion">Evaluación</button><button data-tab="admin">Administrador</button>
+</nav>
+<main>
+<section id="inicio" class="tab active">
+ <div class="grid">
+  <div class="card"><span class="tag">OBJETIVO</span><h2>¿Qué aprenderás?</h2><ul><li>Distinguir soluto, solvente y solución.</li><li>Clasificar soluciones según estado, proporción y saturación.</li><li>Elegir y calcular la unidad de concentración apropiada.</li><li>Resolver problemas de preparación, dilución y mezcla.</li><li>Interpretar porcentajes, molaridad, molalidad, normalidad, fracción molar, ppm y ppb.</li></ul></div>
+  <div class="card"><span class="tag">RUTA DE TRABAJO</span><h2>Una estrategia para resolver</h2><ol class="steps"><li>Identifica qué sustancia es el soluto y cuál es el solvente.</li><li>Registra los datos y convierte las unidades necesarias.</li><li>Selecciona la fórmula compatible con los datos disponibles.</li><li>Sustituye con unidades y desarrolla el cálculo.</li><li>Comprueba el resultado y expresa correctamente la unidad.</li></ol></div>
+ </div>
+ <div class="grid three" style="margin-top:16px">
+  <div class="card"><h3>🧂 Soluto</h3><p>Sustancia que se dispersa o disuelve. Puede haber uno o varios solutos.</p><p class="muted small">Ejemplo: NaCl en agua salada.</p></div>
+  <div class="card"><h3>💧 Solvente</h3><p>Medio que disuelve al soluto. En una solución acuosa, el solvente es el agua.</p><p class="muted small">En general, suele ser el componente en mayor proporción.</p></div>
+  <div class="card"><h3>🧪 Solución</h3><p>Mezcla homogénea de composición uniforme a escala macroscópica.</p><p class="muted small">Ejemplo: aire limpio, vinagre y suero salino.</p></div>
+ </div>
+ <div class="callout"><strong>Idea clave:</strong> concentración significa cuánto soluto hay en una cantidad determinada de solución o de solvente. La base de referencia define la unidad.</div>
+</section>
+
+<section id="conceptos" class="tab">
+ <h2>Conceptos, clasificación y ejemplos</h2>
+ <div class="grid">
+  <div class="card"><h3>Componentes de una solución</h3><p><b>Soluto:</b> componente que se disuelve o se dispersa en el medio.</p><p><b>Solvente:</b> componente que actúa como medio de disolución.</p><p><b>Solución:</b> mezcla homogénea resultante.</p><div class="formula">Soluto + solvente → solución</div><p class="muted small">La regla de “el componente mayoritario es el solvente” es útil, pero no universal: también importa el estado físico y el contexto de la mezcla.</p></div>
+  <div class="card"><h3>Soluciones según el estado físico</h3><table><tr><th>Tipo</th><th>Ejemplo</th></tr><tr><td>Gas en gas</td><td>Aire: oxígeno y otros gases en nitrógeno.</td></tr><tr><td>Gas en líquido</td><td>CO₂ disuelto en una bebida carbonatada.</td></tr><tr><td>Líquido en líquido</td><td>Etanol en agua.</td></tr><tr><td>Sólido en líquido</td><td>Sal o azúcar en agua.</td></tr><tr><td>Sólido en sólido</td><td>Latón: zinc en cobre.</td></tr></table></div>
+  <div class="card"><h3>Según la cantidad de soluto</h3><p><span class="pill">Diluida</span> poca cantidad de soluto respecto a la solución.</p><p><span class="pill">Concentrada</span> proporción relativamente alta de soluto.</p><p>Estos términos son comparativos; por sí solos no indican una concentración numérica.</p><div class="callout">Una solución concentrada no necesariamente está saturada.</div></div>
+  <div class="card"><h3>Según la saturación</h3><p><b>Insaturada:</b> contiene menos soluto del máximo que puede disolverse a una temperatura dada.</p><p><b>Saturada:</b> está en equilibrio con la cantidad máxima disuelta bajo esas condiciones.</p><p><b>Sobresaturada:</b> contiene más soluto disuelto que el valor de equilibrio; es metaestable y puede cristalizar.</p></div>
+  <div class="card"><h3>Solubilidad</h3><p>Cantidad máxima de soluto que puede disolverse en una cantidad definida de solvente a una temperatura y presión especificadas.</p><p>Depende de la naturaleza de las sustancias y de la temperatura; para gases también influye notablemente la presión.</p></div>
+  <div class="card"><h3>Solución, coloide o suspensión</h3><table><tr><th>Sistema</th><th>Características</th><th>Ejemplo</th></tr><tr><td>Solución</td><td>Homogénea, partículas moleculares/iónicas; no sedimenta.</td><td>Agua salada.</td></tr><tr><td>Coloide</td><td>Partículas intermedias; dispersa la luz.</td><td>Leche, niebla.</td></tr><tr><td>Suspensión</td><td>Partículas grandes; puede sedimentar.</td><td>Agua con arena.</td></tr></table></div>
+ </div>
+ <h3 style="margin-top:20px">Ejemplos cotidianos</h3>
+ <table><tr><th>Mezcla</th><th>Soluto(s)</th><th>Solvente / medio</th><th>Observación</th></tr>
+ <tr><td>Agua salada</td><td>NaCl</td><td>Agua</td><td>Los iones quedan hidratados.</td></tr><tr><td>Jarabe</td><td>Azúcar</td><td>Agua</td><td>Solución acuosa; puede ser muy concentrada.</td></tr><tr><td>Vinagre comercial</td><td>Ácido acético</td><td>Agua</td><td>El porcentaje depende del producto.</td></tr><tr><td>Aire</td><td>O₂, Ar, CO₂ y otros</td><td>Principalmente N₂</td><td>Mezcla homogénea de gases.</td></tr><tr><td>Latón</td><td>Zn</td><td>Cu</td><td>Aleación sólida.</td></tr><tr><td>Agua carbonatada</td><td>CO₂</td><td>Agua</td><td>Al abrir el envase baja la presión y sale gas.</td></tr></table>
+</section>
+
+<section id="unidades" class="tab">
+ <h2>Unidades de concentración: fórmulas y criterios</h2>
+ <p class="muted">Elige la unidad según qué magnitudes se conozcan y qué se necesite reportar. No confundas masa de solución con masa de solvente, ni volumen de solución con volumen de solvente.</p>
+ <div class="grid">
+  <div class="card"><span class="tag">% m/m</span><h3>Porcentaje en masa o peso</h3><div class="formula">% m/m = (masa de soluto / masa de solución) × 100</div><p>La masa de solución es masa de soluto + masa de solvente.</p><p><b>Ejemplo:</b> 12 g de NaCl + 88 g de agua = 100 g de solución.</p><div class="formula">% m/m = (12 g / 100 g) × 100 = 12 %</div><p>Hay 12 g de NaCl por cada 100 g de solución.</p></div>
+  <div class="card"><span class="tag">% v/v</span><h3>Porcentaje en volumen</h3><div class="formula">% v/v = (volumen de soluto / volumen de solución) × 100</div><p><b>Ejemplo:</b> se toman 25 mL de etanol y se completa con agua hasta 100 mL de solución.</p><div class="formula">% v/v = (25 mL / 100 mL) × 100 = 25 %</div><p>Se usa, por ejemplo, para mezclas de líquidos miscibles. No se debe asumir que los volúmenes iniciales siempre son aditivos.</p></div>
+  <div class="card"><span class="tag">% m/v</span><h3>Porcentaje masa/volumen</h3><div class="formula">% m/v = (masa de soluto en g / volumen de solución en mL) × 100</div><p><b>Ejemplo:</b> 5 g de glucosa en volumen final de 100 mL.</p><div class="formula">% m/v = (5 g / 100 mL) × 100 = 5 % m/v</div><p>Equivale a 5 g de soluto por cada 100 mL de solución.</p></div>
+  <div class="card"><span class="tag">M</span><h3>Molaridad</h3><div class="formula">M = moles de soluto / litros de solución</div><p>Es una concentración molar dependiente del volumen de solución, que puede cambiar con la temperatura.</p><p><b>Ejemplo:</b> 0,50 mol de NaOH en 2,00 L de solución.</p><div class="formula">M = 0,50 mol / 2,00 L = 0,250 mol·L⁻¹</div></div>
+  <div class="card"><span class="tag">m</span><h3>Molalidad</h3><div class="formula">m = moles de soluto / kg de solvente</div><p>Se refiere a la masa del solvente, no al volumen total de solución. No varía directamente con la expansión térmica.</p><p><b>Ejemplo:</b> 0,20 mol de urea en 0,50 kg de agua.</p><div class="formula">m = 0,20 mol / 0,50 kg = 0,40 mol·kg⁻¹</div></div>
+  <div class="card"><span class="tag">N</span><h3>Normalidad</h3><div class="formula">N = equivalentes de soluto / litros de solución</div><p>Depende de la reacción considerada: el factor de equivalencia puede cambiar según el proceso ácido-base o redox. Por ello, siempre se debe declarar la reacción o el factor n.</p><p><b>Ejemplo ácido-base:</b> H₂SO₄ aporta 2 mol de H⁺ por mol en neutralización completa. Una solución 0,25 M corresponde a 0,50 N para esa reacción.</p><div class="callout warn">La normalidad no es una propiedad universal independiente de la reacción.</div></div>
+  <div class="card"><span class="tag">X</span><h3>Fracción molar</h3><div class="formula">Xᵢ = moles del componente i / moles totales</div><p>Es adimensional; la suma de las fracciones molares de todos los componentes es 1.</p><p><b>Ejemplo:</b> 2 mol de etanol + 8 mol de agua.</p><div class="formula">Xₑₜₐₙₒₗ = 2/(2+8) = 0,20<br>Xₐgᵤₐ = 8/(2+8) = 0,80</div></div>
+  <div class="card"><span class="tag">ppm</span><h3>Partes por millón</h3><div class="formula">ppm ≈ mg/kg (en masa)<br>En agua diluida: ppm ≈ mg/L, si ρ ≈ 1 kg/L</div><p><b>Ejemplo en masa:</b> 3 mg de contaminante en 1 kg de muestra.</p><div class="formula">3 mg / 1 kg = 3 mg/kg ≈ 3 ppm</div><p>La equivalencia ppm ≈ mg/L requiere la aproximación de densidad; no es universal.</p></div>
+  <div class="card"><span class="tag">ppb</span><h3>Partes por mil millones</h3><div class="formula">ppb ≈ μg/kg (en masa)<br>En agua diluida: ppb ≈ μg/L, si ρ ≈ 1 kg/L</div><p><b>Ejemplo:</b> 8 μg de analito por kg de muestra.</p><div class="formula">8 μg/kg ≈ 8 ppb</div><p>Se usa para trazas, como algunos contaminantes ambientales.</p></div>
+  <div class="card"><span class="tag">g/L · mg/L</span><h3>Concentración masa/volumen</h3><div class="formula">C = masa de soluto / volumen de solución</div><p><b>Ejemplo:</b> 2,4 g de soluto en 600 mL de solución.</p><div class="formula">C = 2,4 g / 0,600 L = 4,0 g/L</div><p>Es útil en análisis químico y control de calidad.</p></div>
+  <div class="card"><span class="tag">Dilución</span><h3>Preparar una solución menos concentrada</h3><div class="formula">C₁V₁ = C₂V₂</div><p>Para el mismo soluto, sin reacción ni pérdida: la cantidad de soluto se conserva. Los volúmenes deben estar en unidades compatibles.</p><p><b>Ejemplo:</b> preparar 250 mL de 0,20 M a partir de 1,0 M.</p><div class="formula">V₁ = (0,20 M × 250 mL) / 1,0 M = 50 mL</div><p>Medir 50 mL de solución madre y completar hasta 250 mL.</p></div>
+  <div class="card"><span class="tag">g/mol</span><h3>Puente entre masa y cantidad de sustancia</h3><div class="formula">n = m / MM &nbsp;&nbsp; y &nbsp;&nbsp; m = n × MM</div><p>n: moles; m: masa en gramos; MM: masa molar en g/mol.</p><p><b>Ejemplo:</b> 5,85 g de NaCl (MM ≈ 58,44 g/mol).</p><div class="formula">n = 5,85 g / 58,44 g·mol⁻¹ ≈ 0,100 mol</div></div>
+ </div>
+ <div class="callout good"><b>Regla para elegir:</b> si hay masas de soluto y solución, considera % m/m; si se dan volúmenes de líquido, % v/v; si hay gramos por volumen final, % m/v; si hay moles y litros de solución, molaridad; si hay moles y kg de solvente, molalidad.</div>
+</section>
+
+<section id="ejemplos" class="tab">
+ <h2>Ejemplos resueltos paso a paso</h2>
+ <div class="card"><span class="tag">EJEMPLO 1</span><h3>Porcentaje masa/masa</h3><p>Se disuelven 18 g de glucosa en 132 g de agua. Calcular % m/m.</p><ol class="steps"><li>Masa de solución = 18 g + 132 g = 150 g.</li><li>Fracción en masa del soluto = 18/150 = 0,12.</li><li>Multiplicar por 100.</li></ol><div class="formula">% m/m = (18/150) × 100 = <b>12 %</b></div></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 2</span><h3>Molaridad a partir de masa</h3><p>Se preparan 250 mL de solución con 5,85 g de NaCl. MM(NaCl) = 58,44 g/mol. Hallar M.</p><ol class="steps"><li>Convertir volumen: 250 mL = 0,250 L.</li><li>Calcular moles: n = 5,85/58,44 ≈ 0,1001 mol.</li><li>Dividir moles por litros de solución.</li></ol><div class="formula">M = 0,1001 mol / 0,250 L ≈ <b>0,400 M</b></div></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 3</span><h3>Molalidad</h3><p>Se disuelven 9,0 g de glucosa (MM = 180 g/mol) en 200 g de agua.</p><ol class="steps"><li>Moles de glucosa = 9,0/180 = 0,050 mol.</li><li>Masa de solvente = 200 g = 0,200 kg.</li><li>Molalidad = 0,050/0,200.</li></ol><div class="formula">m = <b>0,250 mol·kg⁻¹</b></div></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 4</span><h3>Normalidad en neutralización</h3><p>Una solución de H₂SO₄ tiene molaridad 0,15 M. Para neutralización completa con NaOH, calcular la normalidad ácido-base.</p><p>En esta reacción, cada mol de H₂SO₄ puede aportar 2 mol de H⁺: factor de equivalencia = 2.</p><div class="formula">N = M × factor = 0,15 × 2 = <b>0,30 N</b></div><p class="muted small">Este resultado corresponde a la neutralización completa; en otras reacciones debe justificarse el factor.</p></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 5</span><h3>Fracción molar de una mezcla</h3><p>Una mezcla tiene 3 mol de acetona y 7 mol de agua.</p><div class="formula">n total = 3 + 7 = 10 mol<br>X acetona = 3/10 = <b>0,30</b><br>X agua = 7/10 = <b>0,70</b></div><p>Verificación: 0,30 + 0,70 = 1,00.</p></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 6</span><h3>ppm en una muestra acuosa</h3><p>Una muestra de agua contiene 1,8 mg de una sustancia en 2,0 L. Suponiendo densidad cercana a 1,00 kg/L, estima ppm.</p><div class="formula">Concentración = 1,8 mg / 2,0 L = 0,90 mg/L<br>Para agua diluida: 0,90 mg/L ≈ <b>0,90 ppm</b></div><p class="muted small">La aproximación depende de la densidad de la muestra.</p></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 7</span><h3>Dilución desde una solución madre</h3><p>¿Qué volumen de HCl 2,0 M se requiere para preparar 100 mL de HCl 0,50 M?</p><div class="formula">V₁ = C₂V₂/C₁ = (0,50 M × 100 mL)/(2,0 M) = <b>25 mL</b></div><p>Tomar 25 mL de solución madre y diluir con solvente hasta un volumen final de 100 mL. En laboratorio, agregar siempre el ácido al agua, siguiendo el protocolo de seguridad.</p></div>
+ <div class="card" style="margin-top:14px"><span class="tag">EJEMPLO 8</span><h3>Porcentaje masa/volumen</h3><p>Una solución contiene 7,5 g de soluto en 300 mL de solución.</p><div class="formula">% m/v = (7,5 g / 300 mL) × 100 = <b>2,5 % m/v</b></div><p>Esto representa 2,5 g de soluto por cada 100 mL de solución.</p></div>
+</section>
+
+<section id="laboratorio" class="tab">
+ <h2>Calculadora interactiva de concentración</h2>
+ <p class="muted">Selecciona el tipo de cálculo, introduce los datos y pulsa “Calcular”. Los campos deben corresponder a las magnitudes que pide cada fórmula.</p>
+ <div class="card">
+  <label for="calcType">Tipo de cálculo</label><select id="calcType">
+   <option value="mm">Porcentaje masa/masa (% m/m)</option><option value="vv">Porcentaje volumen/volumen (% v/v)</option><option value="mv">Porcentaje masa/volumen (% m/v)</option><option value="M">Molaridad (mol/L)</option><option value="m">Molalidad (mol/kg solvente)</option><option value="N">Normalidad (eq/L)</option><option value="X">Fracción molar</option><option value="ppm">ppm en masa (mg/kg)</option><option value="ppb">ppb en masa (µg/kg)</option><option value="gL">Concentración en g/L</option><option value="dil">Dilución C₁V₁=C₂V₂</option>
+  </select>
+  <div id="calcFields" class="grid"></div>
+  <button class="primary" id="calculate">Calcular</button><button class="secondary" id="clearCalc">Limpiar</button>
+  <div id="calcResult" class="result" aria-live="polite">Introduce los datos para obtener el resultado.</div>
+ </div>
+ <div class="card" style="margin-top:16px"><h3>Simulador de preparación por porcentaje m/m</h3><p>Modifica la masa de soluto y la masa de solvente para observar cómo cambia el porcentaje en masa.</p><div class="grid"><div><label for="simSolute">Masa de soluto (g)</label><input type="number" id="simSolute" min="0" step="0.1" value="10"></div><div><label for="simSolvent">Masa de solvente (g)</label><input type="number" id="simSolvent" min="0" step="0.1" value="90"></div></div><div class="result"><div class="big" id="simPct">10,00 % m/m</div><div class="meter"><span id="simMeter"></span></div><p id="simExplain" class="muted">10 g de soluto en 100 g de solución.</p></div></div>
+</section>
+
+<section id="evaluacion" class="tab">
+ <h2>Evaluación de alto nivel</h2><p class="muted">Preguntas conceptuales y cuantitativas. Selecciona la respuesta, revisa la retroalimentación y al final calcula tu resultado.</p>
+ <div class="card"><div class="sim"><div><label for="quizCount">Número de preguntas</label><select id="quizCount"><option value="8">8 preguntas</option><option value="12" selected>12 preguntas</option><option value="16">16 preguntas</option><option value="20">20 preguntas</option></select></div><div><button class="primary" id="startQuiz">Iniciar / reiniciar evaluación</button></div></div><div id="quizProgress" class="muted small"></div><div id="quizArea"></div><div id="quizResult" class="result hidden"></div></div>
+</section>
+
+<section id="admin" class="tab">
+ <h2>Panel de administración de preguntas</h2><p class="muted">Permite crear, editar y eliminar preguntas de la evaluación. Los cambios se guardan en el navegador de este dispositivo. Exporta una copia JSON para respaldar o transferir el banco.</p>
+ <div class="grid">
+  <div class="card"><h3>Editar pregunta</h3><input id="editId" type="hidden"><label for="qText">Enunciado</label><textarea id="qText" rows="3" placeholder="Escribe la pregunta..."></textarea>
+  <label for="qA">Opción A</label><input id="qA"><label for="qB">Opción B</label><input id="qB"><label for="qC">Opción C</label><input id="qC"><label for="qD">Opción D</label><input id="qD">
+  <label for="qCorrect">Respuesta correcta</label><select id="qCorrect"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select><label for="qExplanation">Explicación</label><textarea id="qExplanation" rows="2"></textarea>
+  <button class="primary" id="saveQuestion">Guardar pregunta</button><button class="secondary" id="resetQuestion">Limpiar formulario</button></div>
+  <div class="card"><h3>Banco actual</h3><div id="questionList"></div><button class="secondary" id="exportJson">Exportar banco JSON</button><button class="secondary" id="importJsonBtn">Importar banco JSON</button><input id="importFile" type="file" accept=".json,application/json" class="hidden"><button class="danger" id="resetBank">Restaurar banco original</button><div id="adminMessage" class="result">Las preguntas personalizadas se guardan localmente en este navegador.</div></div>
+ </div>
+</section>
+</main>
+<div class="footer">Guía interactiva de Química · Dirección del proyecto: <strong>Alberto Luis Sánchez Flórez</strong><br><span class="small">Material didáctico. Verifica las condiciones, unidades y normas de seguridad en prácticas reales.</span></div>
+<script>
+const $=id=>document.getElementById(id);
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active');if(b.dataset.tab==='admin')renderAdmin();}));
+const fieldSets={
+mm:[['solute','Masa de soluto (g)','10'],['solution','Masa total de solución (g)','100']],
+vv:[['solute','Volumen de soluto (mL)','25'],['solution','Volumen final de solución (mL)','100']],
+mv:[['solute','Masa de soluto (g)','5'],['solution','Volumen de solución (mL)','100']],
+M:[['moles','Moles de soluto (mol)','0.5'],['volume','Volumen de solución (L)','2']],
+m:[['moles','Moles de soluto (mol)','0.2'],['solvent','Masa de solvente (kg)','0.5']],
+N:[['eq','Equivalentes de soluto (eq)','0.5'],['volume','Volumen de solución (L)','1']],
+X:[['ni','Moles del componente (mol)','2'],['nt','Moles totales (mol)','10']],
+ppm:[['solute','Masa de analito (mg)','3'],['sample','Masa de muestra (kg)','1']],
+ppb:[['solute','Masa de analito (µg)','8'],['sample','Masa de muestra (kg)','1']],
+gL:[['solute','Masa de soluto (g)','2.4'],['volume','Volumen de solución (L)','0.6']],
+dil:[['c1','Concentración inicial C₁','1'],['v1','Volumen inicial V₁ (mL)','50'],['c2','Concentración final C₂','0.2'],['v2','Volumen final V₂ (mL; dejar V₁ en 0 para calcularlo)','250']]
+};
+function renderCalcFields(){const type=$('calcType').value; $('calcFields').innerHTML=fieldSets[type].map(f=>`<div><label for="f_${f[0]}">${f[1]}</label><input type="number" id="f_${f[0]}" step="any" value="${f[2]}"></div>`).join('');$('calcResult').textContent='Introduce los datos y calcula.'}
+$('calcType').addEventListener('change',renderCalcFields);renderCalcFields();
+function num(id){return Number($('f_'+id).value)}
+$('calculate').addEventListener('click',()=>{let t=$('calcType').value,r='',a,b;try{switch(t){
+case'mm':a=num('solute');b=num('solution');if(a<0||b<=0||a>b)throw Error('La masa de solución debe ser positiva y no menor que la masa de soluto.');r=`${(a/b*100).toLocaleString('es-CO',{maximumFractionDigits:6})} % m/m`;break;
+case'vv':a=num('solute');b=num('solution');if(a<0||b<=0||a>b)throw Error('Verifica los volúmenes: el volumen final debe ser positivo y, para este ejercicio, no menor que el del soluto.');r=`${(a/b*100).toLocaleString('es-CO',{maximumFractionDigits:6})} % v/v`;break;
+case'mv':a=num('solute');b=num('solution');if(a<0||b<=0)throw Error('Usa masa no negativa y volumen final positivo.');r=`${(a/b*100).toLocaleString('es-CO',{maximumFractionDigits:6})} % m/v`;break;
+case'M':a=num('moles');b=num('volume');if(a<0||b<=0)throw Error('Los moles no pueden ser negativos y el volumen debe ser positivo.');r=`${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})} mol/L (M)`;break;
+case'm':a=num('moles');b=num('solvent');if(a<0||b<=0)throw Error('Los moles no pueden ser negativos y la masa de solvente debe ser positiva.');r=`${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})} mol/kg (m)`;break;
+case'N':a=num('eq');b=num('volume');if(a<0||b<=0)throw Error('Los equivalentes no pueden ser negativos y el volumen debe ser positivo.');r=`${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})} eq/L (N). Declara la reacción/factor de equivalencia.`;break;
+case'X':a=num('ni');b=num('nt');if(a<0||b<=0||a>b)throw Error('Los moles del componente deben estar entre cero y los moles totales.');r=`Xᵢ = ${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})}`;break;
+case'ppm':a=num('solute');b=num('sample');if(a<0||b<=0)throw Error('La muestra debe tener masa positiva.');r=`${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})} mg/kg ≈ ppm`;break;
+case'ppb':a=num('solute');b=num('sample');if(a<0||b<=0)throw Error('La muestra debe tener masa positiva.');r=`${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})} µg/kg ≈ ppb`;break;
+case'gL':a=num('solute');b=num('volume');if(a<0||b<=0)throw Error('La masa no puede ser negativa y el volumen debe ser positivo.');r=`${(a/b).toLocaleString('es-CO',{maximumFractionDigits:8})} g/L`;break;
+case'dil':{let c1=num('c1'),v1=num('v1'),c2=num('c2'),v2=num('v2');if(c1<=0||c2<0||v1<0||v2<0)throw Error('Las concentraciones deben ser válidas y los volúmenes no negativos.');if(v2===0){if(v1<=0||c2<=0)throw Error('Para calcular V₂, proporciona V₁ positivo y concentraciones positivas.');r=`V₂ requerido = ${(c1*v1/c2).toLocaleString('es-CO',{maximumFractionDigits:8})} mL`;}else if(v1===0){r=`V₁ requerido = ${(c2*v2/c1).toLocaleString('es-CO',{maximumFractionDigits:8})} mL`;}else{r=`C₁V₁ = ${(c1*v1).toLocaleString('es-CO',{maximumFractionDigits:8})}; C₂V₂ = ${(c2*v2).toLocaleString('es-CO',{maximumFractionDigits:8})}. ${Math.abs(c1*v1-c2*v2)<1e-6?'Los datos cumplen la relación de dilución.':'Los datos no cumplen la relación; ajusta V₁ o V₂.'}`;}break;}
+} $('calcResult').innerHTML='<b>Resultado:</b> '+r;}catch(e){$('calcResult').textContent=e.message}});
+$('clearCalc').addEventListener('click',renderCalcFields);
+function updateSim(){let s=Number($('simSolute').value),w=Number($('simSolvent').value),tot=s+w,p=tot>0&&s>=0&&w>=0?s/tot*100:0;$('simPct').textContent=p.toLocaleString('es-CO',{minimumFractionDigits:2,maximumFractionDigits:2})+' % m/m';$('simMeter').style.width=Math.max(0,Math.min(100,p))+'%';$('simExplain').textContent=`${s} g de soluto en ${tot} g de solución.`}
+$('simSolute').addEventListener('input',updateSim);$('simSolvent').addEventListener('input',updateSim);updateSim();
+
+const originalQuestions=[
+{q:'Se disuelven 15 g de soluto en 135 g de agua. ¿Cuál es el porcentaje m/m?',o:['10 %','11,1 %','15 %','90 %'],a:0,e:'La masa total es 15 + 135 = 150 g. % m/m = (15/150) × 100 = 10 %.'},
+{q:'¿Qué dato se usa en el denominador de la molaridad?',o:['kg de solvente','L de solución','g de solvente','L de soluto puro'],a:1,e:'M = moles de soluto divididos por litros de solución.'},
+{q:'¿Cuál enunciado distingue correctamente molaridad y molalidad?',o:['Ambas usan kg de solvente','Molaridad usa L de solución; molalidad usa kg de solvente','Molaridad usa g de solución','Molalidad depende de litros de solución'],a:1,e:'La molaridad usa volumen total de solución; la molalidad usa masa del solvente.'},
+{q:'Se preparan 250 mL de solución con 0,10 mol de soluto. La molaridad es:',o:['0,025 M','0,40 M','2,5 M','4,0 M'],a:1,e:'250 mL = 0,250 L. M = 0,10/0,250 = 0,40 M.'},
+{q:'¿Cuántos gramos de soluto hay en 200 g de solución al 8 % m/m?',o:['8 g','16 g','25 g','184 g'],a:1,e:'Masa de soluto = 0,08 × 200 g = 16 g.'},
+{q:'Una mezcla contiene 30 mL de etanol en 120 mL de solución. ¿% v/v?',o:['20 %','25 %','30 %','40 %'],a:1,e:'% v/v = 30/120 × 100 = 25 %.'},
+{q:'Se tienen 0,25 mol de soluto en 0,50 kg de solvente. La molalidad es:',o:['0,125 m','0,50 m','2,0 m','0,25 m'],a:1,e:'m = 0,25 mol / 0,50 kg = 0,50 mol/kg.'},
+{q:'Para una reacción de neutralización completa, H₂SO₄ aporta dos protones por mol. Si es 0,20 M, su normalidad ácido-base es:',o:['0,10 N','0,20 N','0,40 N','2,0 N'],a:2,e:'En neutralización completa, N = M × 2 = 0,40 N. La normalidad depende de la reacción.'},
+{q:'Una mezcla tiene 4 mol de A y 6 mol de B. ¿Cuál es Xₐ?',o:['0,40','0,60','4,0','0,10'],a:0,e:'Xₐ = 4/(4+6) = 0,40.'},
+{q:'En una muestra hay 5 mg de analito por kg de muestra. La concentración másica es aproximadamente:',o:['5 ppb','0,005 ppm','5 ppm','5000 ppm'],a:2,e:'1 mg/kg corresponde a 1 ppm en base másica; por tanto, 5 mg/kg = 5 ppm.'},
+{q:'En agua diluida con densidad cercana a 1 kg/L, 12 µg/L corresponde aproximadamente a:',o:['12 ppm','12 ppb','0,012 ppb','12000 ppb'],a:1,e:'En esa aproximación, µg/L ≈ ppb.'},
+{q:'Para preparar 100 mL de solución 0,20 M desde una solución madre 1,0 M, se requieren:',o:['2 mL','20 mL','50 mL','500 mL'],a:1,e:'C₁V₁=C₂V₂; V₁=(0,20×100)/1,0=20 mL.'},
+{q:'¿Cuál afirmación sobre una solución saturada es correcta?',o:['Siempre contiene igual masa de soluto sin importar la temperatura','Está en equilibrio con la cantidad máxima disuelta bajo condiciones dadas','Siempre es más diluida que una insaturada','No puede contener sólido en contacto'],a:1,e:'La saturación depende de la temperatura, presión (especialmente en gases) y naturaleza de las sustancias.'},
+{q:'¿Qué fórmula corresponde al porcentaje m/v?',o:['g de soluto por 100 g de solvente','moles por litro','g de soluto por 100 mL de solución','moles por kg de solvente'],a:2,e:'% m/v = gramos de soluto por cada 100 mL de solución.'},
+{q:'¿Cuál es la principal precaución al usar ppm ≈ mg/L?',o:['Nunca se usa en agua','Solo es aproximación si la densidad es cercana a 1 kg/L','Solo funciona con gases','Es idéntica a molaridad'],a:1,e:'ppm es una razón; mg/L es masa/volumen. Su equivalencia aproximada depende de la densidad.'},
+{q:'Se mezclan 2 mol de A y 3 mol de B. ¿Qué suma deben cumplir sus fracciones molares?',o:['0,5','1','5','100'],a:1,e:'La suma de fracciones molares de todos los componentes es 1.'},
+{q:'¿Qué es el solvente en una solución acuosa de azúcar?',o:['Azúcar','Agua','Oxígeno','La solución completa'],a:1,e:'“Acuosa” indica que el solvente es agua.'},
+{q:'Si se disuelven 6 g en un volumen final de 300 mL, ¿cuál es el % m/v?',o:['0,5 %','2 %','5 %','20 %'],a:1,e:'(6 g/300 mL)×100 = 2 g por 100 mL = 2 % m/v.'},
+{q:'Una solución 0,5 M se diluye al doble de volumen sin pérdida de soluto. La nueva molaridad es:',o:['1,0 M','0,50 M','0,25 M','0,10 M'],a:2,e:'Al duplicar el volumen, la concentración se reduce a la mitad: 0,25 M.'},
+{q:'¿Cuál sistema es una suspensión más que una solución verdadera?',o:['NaCl disuelto en agua','Etanol en agua','Arena en agua que sedimenta','Aire'],a:2,e:'La arena no se disuelve molecular o iónicamente y puede sedimentar; es una suspensión.'}
+];
+let questions=JSON.parse(localStorage.getItem('solucionesQuestions')||'null')||originalQuestions.map((q,i)=>({...q,id:i+1}));let currentQuiz=[],answers={};
+function saveBank(){localStorage.setItem('solucionesQuestions',JSON.stringify(questions))}
+function shuffle(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function startQuiz(){currentQuiz=shuffle(questions).slice(0,Math.min(Number($('quizCount').value),questions.length));answers={};$('quizResult').classList.add('hidden');renderQuiz()}
+function renderQuiz(){ $('quizProgress').textContent=`${currentQuiz.length} preguntas · Banco disponible: ${questions.length}`;$('quizArea').innerHTML=currentQuiz.map((q,i)=>`<div class="question" data-index="${i}"><b>${i+1}. ${escapeHtml(q.q)}</b>${q.o.map((op,j)=>`<label class="option"><input type="radio" name="quiz${i}" value="${j}" ${answers[i]===j?'checked':''} style="width:auto;margin-right:8px">${String.fromCharCode(65+j)}. ${escapeHtml(op)}</label>`).join('')}<div id="fb${i}" class="feedback"></div><button class="secondary" onclick="checkOne(${i})">Comprobar respuesta</button></div>`).join('')+`<button class="primary" id="finishQuiz">Calificar evaluación</button>`;$('finishQuiz').addEventListener('click',finishQuiz);currentQuiz.forEach((q,i)=>document.querySelectorAll(`input[name="quiz${i}"]`).forEach(el=>el.addEventListener('change',()=>answers[i]=Number(el.value))))}
+function checkOne(i){let q=currentQuiz[i],a=answers[i];if(a===undefined){$('fb'+i).textContent='Selecciona una opción.';return}$('fb'+i).textContent=(a===q.a?'Correcto. ':'Incorrecto. ')+q.e;$('fb'+i).style.color=a===q.a?'var(--green)':'var(--gold)'}
+function finishQuiz(){let correct=0;currentQuiz.forEach((q,i)=>{if(answers[i]===q.a)correct++;checkOne(i)});let pct=correct/currentQuiz.length*100;$('quizResult').classList.remove('hidden');$('quizResult').innerHTML=`<div class="big">${correct}/${currentQuiz.length} · ${pct.toLocaleString('es-CO',{maximumFractionDigits:1})}%</div><p>${pct>=90?'Desempeño sobresaliente.':pct>=70?'Buen desempeño; revisa las explicaciones de los errores.':'Repasa las fórmulas, unidades y ejemplos antes de intentarlo de nuevo.'}</p><div class="meter"><span style="width:${pct}%"></span></div>`}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('startQuiz').addEventListener('click',startQuiz);startQuiz();
+function renderAdmin(){ $('questionList').innerHTML=questions.map((q,i)=>`<div class="question"><b>${i+1}. ${escapeHtml(q.q)}</b><div class="small muted">Correcta: ${String.fromCharCode(65+q.a)} · ${escapeHtml(q.o[q.a]||'')}</div><button class="secondary" onclick="editQuestion(${i})">Editar</button><button class="danger" onclick="deleteQuestion(${i})">Eliminar</button></div>`).join('')||'<p>No hay preguntas.</p>'}
+function editQuestion(i){let q=questions[i];$('editId').value=i;$('qText').value=q.q;$('qA').value=q.o[0]||'';$('qB').value=q.o[1]||'';$('qC').value=q.o[2]||'';$('qD').value=q.o[3]||'';$('qCorrect').value=q.a;$('qExplanation').value=q.e;window.scrollTo({top:$('admin').offsetTop,behavior:'smooth'})}
+function clearForm(){['editId','qText','qA','qB','qC','qD','qExplanation'].forEach(id=>$(id).value='');$('qCorrect').value='0'}
+$('resetQuestion').addEventListener('click',clearForm);
+$('saveQuestion').addEventListener('click',()=>{let q={q:$('qText').value.trim(),o:[$('qA').value.trim(),$('qB').value.trim(),$('qC').value.trim(),$('qD').value.trim()],a:Number($('qCorrect').value),e:$('qExplanation').value.trim()};if(!q.q||q.o.some(x=>!x)||!q.e){$('adminMessage').textContent='Completa el enunciado, las cuatro opciones y la explicación.';return}let id=$('editId').value;if(id===''){q.id=Date.now();questions.push(q);$('adminMessage').textContent='Pregunta agregada.'}else{q.id=questions[Number(id)].id;questions[Number(id)]=q;$('adminMessage').textContent='Pregunta actualizada.'}saveBank();clearForm();renderAdmin()});
+function deleteQuestion(i){if(confirm('¿Eliminar esta pregunta del banco?')){questions.splice(i,1);saveBank();renderAdmin();$('adminMessage').textContent='Pregunta eliminada.'}}
+$('exportJson').addEventListener('click',()=>{let blob=new Blob([JSON.stringify(questions,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='banco_preguntas_soluciones.json';a.click();URL.revokeObjectURL(url);$('adminMessage').textContent='Exportación iniciada.'});
+$('importJsonBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{let f=e.target.files[0];if(!f)return;try{let data=JSON.parse(await f.text());if(!Array.isArray(data)||data.some(q=>!q.q||!Array.isArray(q.o)||q.o.length!==4||!Number.isInteger(q.a)||q.a<0||q.a>3||!q.e))throw Error('El JSON no tiene el formato esperado.');questions=data;saveBank();renderAdmin();$('adminMessage').textContent='Banco importado correctamente.'}catch(err){$('adminMessage').textContent='No se pudo importar: '+err.message}e.target.value=''});
+$('resetBank').addEventListener('click',()=>{if(confirm('¿Restaurar el banco original? Se perderán los cambios locales.')){questions=originalQuestions.map((q,i)=>({...q,id:i+1}));saveBank();renderAdmin();$('adminMessage').textContent='Banco original restaurado.'}});
+renderAdmin();
+</script>
+
+<footer class="rumbo-foot">
+  <div>
+    <a href="../index.html">RUMBO EDUCA</a>
+    <a href="index.html">Ciencias</a>
+    <a href="../resiliencia/">Resiliencia</a>
+    <a href="../orientacion/">Vocacional</a>
+    <a href="../admin/">Admin</a>
+  </div>
+  <div class="sub">Laboratorio de aprendizaje y orientación · Una iniciativa de OAKTREESKY</div>
+</footer>
+
+</body>
+</html>

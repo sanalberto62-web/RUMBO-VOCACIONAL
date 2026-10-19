@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estados de agregación | RUMBO CIENCIAS</title>
+<meta name="theme-color" content="#123D32">
+<style>
+:root{--bg:#071b16;--panel:#0d2a21;--panel2:#12382b;--green:#37d49a;--mint:#a8f0d2;--lime:#d3f36b;--text:#edf9f2;--muted:#b4cfc1;--line:#285342;--orange:#ffbd69;--red:#ff8585}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0%,#164b37 0,#071b16 40%,#04110e 100%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{padding:48px 20px 34px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(135deg,#0c3426dd,#071b16ee)}
+.wrap{max-width:1150px;margin:auto;padding:0 18px}.eyebrow{color:var(--lime);text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:.78rem}
+h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.1;margin:.5rem 0 1rem}h2{color:var(--mint);font-size:1.65rem;margin-top:0}h3{color:var(--lime);margin:.3rem 0 .6rem}p{margin:.5rem 0 1rem}.lead{max-width:800px;margin:0 auto;color:var(--muted);font-size:1.08rem}
+.credit{margin-top:20px;color:var(--mint);font-weight:700}
+nav{position:sticky;top:0;z-index:10;background:#061710ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);overflow-x:auto}
+nav .wrap{display:flex;gap:8px;padding-top:10px;padding-bottom:10px;white-space:nowrap}nav a{color:var(--muted);text-decoration:none;padding:7px 11px;border:1px solid transparent;border-radius:999px;font-size:.88rem}nav a:hover{border-color:var(--green);color:white;background:#103b2b}
+main{padding:28px 0 60px}.section{margin:22px 0 30px;padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#0d2a21ee,#081d17ee);box-shadow:0 14px 35px #0002;scroll-margin-top:76px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}.card{background:#103528;border:1px solid #285a43;border-radius:16px;padding:18px}.card p{color:var(--muted)}.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#194c38;color:var(--mint);font-size:.8rem;font-weight:700}
+.callout{padding:15px 17px;border-left:4px solid var(--green);background:#123729;border-radius:8px;margin:15px 0}.warn{border-left-color:var(--orange);background:#352b1b}.formula{font-size:1.1rem;font-weight:800;color:var(--lime);letter-spacing:.02em}
+table{width:100%;border-collapse:collapse;margin:12px 0;overflow:hidden;border-radius:10px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#174632;color:var(--mint)}td{background:#0c261d}small,.muted{color:var(--muted)}
+button,select,input{font:inherit}button{border:0;border-radius:10px;background:var(--green);color:#062117;padding:10px 15px;font-weight:800;cursor:pointer}button:hover{filter:brightness(1.08)}button.secondary{background:#194c38;color:var(--text);border:1px solid #357557}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+select{background:#071b16;color:var(--text);border:1px solid #357557;border-radius:10px;padding:10px;max-width:100%}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0}
+.particles{height:170px;border-radius:14px;border:1px solid #357557;background:radial-gradient(circle at 20% 20%,#174d38,#071a14);position:relative;overflow:hidden;margin:14px 0}
+.dot{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px #37d49a88}
+canvas{width:100%;height:350px;display:block;background:#061811;border:1px solid #2a5c45;border-radius:14px}
+.quizq{padding:16px;border-radius:14px;background:#0d2b21;border:1px solid var(--line);margin:13px 0}.answers{display:grid;gap:8px;margin-top:10px}.answers label{display:flex;gap:9px;align-items:flex-start;background:#12382b;border:1px solid #285342;padding:10px;border-radius:10px;cursor:pointer}.answers label:hover{border-color:var(--green)}
+.result{font-weight:800;margin-top:10px}.correct{color:var(--green)}.incorrect{color:var(--orange)}
+footer{text-align:center;padding:30px 18px;color:var(--muted);border-top:1px solid var(--line)}
+details{background:#0b251b;border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:10px 0}summary{cursor:pointer;color:var(--mint);font-weight:700}
+@media(max-width:600px){.section{padding:18px}.wrap{padding:0 12px}th,td{padding:8px;font-size:.92rem}canvas{height:280px}}
+
+
+/* === RUMBO EDUCA unified chrome === */
+.rumbo-topbar{background:#123D32;color:#e9f1eb;font-size:.78rem;text-align:center;padding:7px 12px;letter-spacing:.02em}
+.rumbo-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e2e7e1;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.rumbo-nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rumbo-brand{display:flex;align-items:center;gap:10px;color:#123D32;text-decoration:none;font-weight:800;font-size:.95rem}
+.rumbo-brand .mark{width:34px;height:34px;border-radius:10px;background:#123D32;color:#f4e6bd;display:grid;place-items:center;font-size:.95rem;flex-shrink:0}
+.rumbo-brand .tag{display:block;font-size:.58rem;font-weight:650;color:#637169;letter-spacing:.1em;margin-top:2px}
+.rumbo-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rumbo-links a{text-decoration:none;color:#3f5148;font-size:.82rem;font-weight:650;padding:7px 11px;border-radius:999px;border:1px solid transparent}
+.rumbo-links a:hover{color:#123D32;background:#e8f0eb}
+.rumbo-links a.primary{background:#123D32;color:#fff;border-color:#123D32}
+.rumbo-links a.primary:hover{background:#1e5a49;color:#fff}
+.rumbo-foot{background:#0c2d25;color:#b8c9be;padding:18px 16px;text-align:center;font-size:.8rem;font-family:Inter,ui-sans-serif,system-ui,sans-serif;margin-top:32px}
+.rumbo-foot a{color:#e9f1eb;text-decoration:none;margin:0 8px;font-weight:650}
+.rumbo-foot a:hover{text-decoration:underline}
+.rumbo-foot .sub{opacity:.75;margin-top:6px;font-size:.72rem}
+@media(max-width:640px){
+  .rumbo-links a:not(.primary){display:none}
+  .rumbo-brand span:not(.mark){font-size:.85rem}
+}
+
+</style>
+</head>
+<body>
+
+<div class="rumbo-topbar">RUMBO EDUCA · Laboratorio de aprendizaje y orientación · OAKTREESKY</div>
+<nav class="rumbo-nav" aria-label="Navegación RUMBO">
+  <div class="rumbo-nav-inner">
+    <a class="rumbo-brand" href="index.html">
+      <span class="mark" aria-hidden="true">⚗</span>
+      <span>RUMBO CIENCIAS<span class="tag">QUÍMICA · DÉCIMO Y UNDÉCIMO</span></span>
+    </a>
+    <div class="rumbo-links">
+      <a href="../index.html">Inicio</a>
+      <a href="index.html">Catálogo</a>
+      <a href="../resiliencia/">Resiliencia</a>
+      <a href="../orientacion/">Vocacional</a>
+      <a class="primary" href="index.html">← Guías</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+ <div class="wrap">
+  <div class="eyebrow">Química general · Guía de aprendizaje</div>
+  <h1>Estados de agregación de la materia</h1>
+  <p class="lead">Propiedades de sólidos, líquidos y gases; cambios de estado; energía térmica; curvas de calentamiento y diagramas de fases. Incluye simulaciones, ejemplos cotidianos y evaluación interactiva.</p>
+  <div class="credit">Dirección del proyecto: Alberto Luis Sánchez Flórez</div>
+ </div>
+</header>
+<nav><div class="wrap">
+<a href="#materia">Materia y partículas</a><a href="#estados">Estados</a><a href="#cambios">Cambios de estado</a><a href="#energia">Energía y curvas</a><a href="#fases">Diagrama de fases</a><a href="#agua">Caso del agua</a><a href="#aplicaciones">Aplicaciones</a><a href="#evaluacion">Evaluación</a>
+</div></nav>
+<main class="wrap">
+<section id="materia" class="section">
+<h2>1. ¿Qué es la materia?</h2>
+<p>La materia es todo aquello que tiene masa y ocupa un lugar en el espacio. Está constituida por átomos, moléculas, iones u otras partículas. El estado de agregación depende de la energía de las partículas, sus interacciones y las condiciones de temperatura y presión.</p>
+<div class="grid">
+ <article class="card"><span class="tag">Modelo de partículas</span><h3>Movimiento</h3><p>Las partículas están en movimiento constante. En un sólido vibran alrededor de posiciones; en un líquido se reordenan y fluyen; en un gas se desplazan ampliamente.</p></article>
+ <article class="card"><span class="tag">Energía</span><h3>Energía cinética</h3><p>Está asociada al movimiento de las partículas. Al aumentar la temperatura, aumenta su energía cinética promedio.</p></article>
+ <article class="card"><span class="tag">Interacciones</span><h3>Fuerzas intermoleculares</h3><p>Influyen en la cohesión, viscosidad, tensión superficial y temperaturas de fusión y ebullición.</p></article>
+</div>
+<div class="callout"><strong>Idea clave:</strong> la temperatura se relaciona con la energía cinética promedio, mientras que el calor es energía transferida debido a una diferencia de temperatura.</div>
+</section>
+
+<section id="estados" class="section">
+<h2>2. Estados de agregación</h2>
+<div class="grid">
+ <article class="card"><h3>Sólido</h3><p><strong>Forma:</strong> definida. <strong>Volumen:</strong> definido.</p><p>Partículas muy próximas, con posiciones relativamente fijas y vibración. Suele ser poco compresible.</p><p><em>Ejemplos:</em> hielo, sal, hierro.</p></article>
+ <article class="card"><h3>Líquido</h3><p><strong>Forma:</strong> adopta la del recipiente. <strong>Volumen:</strong> definido.</p><p>Partículas próximas que pueden deslizarse y reorganizarse. Fluye y es poco compresible.</p><p><em>Ejemplos:</em> agua, etanol, aceite.</p></article>
+ <article class="card"><h3>Gas</h3><p><strong>Forma y volumen:</strong> no definidos.</p><p>Partículas separadas que ocupan el recipiente, se mueven rápidamente y son compresibles.</p><p><em>Ejemplos:</em> aire, vapor de agua, dióxido de carbono.</p></article>
+ <article class="card"><h3>Plasma</h3><p>Gas ionizado con iones y electrones libres; conduce electricidad y responde a campos electromagnéticos.</p><p><em>Ejemplos:</em> el Sol, estrellas, relámpagos y lámparas de plasma.</p></article>
+</div>
+<h3>Explora el modelo de partículas</h3>
+<p class="muted">Selecciona un estado para observar cómo cambia la distribución de partículas. Es una representación esquemática, no una escala real.</p>
+<div class="controls"><label for="statePick">Estado:</label><select id="statePick"><option value="solid">Sólido</option><option value="liquid">Líquido</option><option value="gas">Gas</option><option value="plasma">Plasma (esquema)</option></select><button id="particleBtn">Reorganizar partículas</button></div>
+<div class="particles" id="particleBox" aria-label="Modelo de partículas"></div>
+<div id="particleDesc" class="callout">En un sólido, las partículas permanecen próximas y ordenadas.</div>
+<div class="callout warn"><strong>Precisión científica:</strong> los estados no se distinguen solo por “qué tan rápido se mueven” las partículas. También importan su separación, las interacciones y las condiciones de presión y temperatura.</div>
+</section>
+
+<section id="cambios" class="section">
+<h2>3. Cambios de estado</h2>
+<p>Un cambio de estado es una transformación física: la sustancia conserva su identidad química, aunque cambien la organización y el movimiento de sus partículas.</p>
+<div class="grid">
+ <article class="card"><h3>Fusión</h3><p>Sólido → líquido. Absorbe energía.</p><p><em>Ejemplo:</em> el hielo se derrite.</p></article>
+ <article class="card"><h3>Solidificación</h3><p>Líquido → sólido. Libera energía.</p><p><em>Ejemplo:</em> el agua se congela.</p></article>
+ <article class="card"><h3>Vaporización</h3><p>Líquido → gas. Absorbe energía. Puede ocurrir por evaporación o ebullición.</p></article>
+ <article class="card"><h3>Condensación</h3><p>Gas → líquido. Libera energía.</p><p><em>Ejemplo:</em> gotas en un vaso frío.</p></article>
+ <article class="card"><h3>Sublimación</h3><p>Sólido → gas sin pasar por el líquido, bajo condiciones apropiadas.</p><p><em>Ejemplo:</em> hielo seco.</p></article>
+ <article class="card"><h3>Deposición o sublimación inversa</h3><p>Gas → sólido sin pasar por el líquido.</p><p><em>Ejemplo:</em> formación de escarcha.</p></article>
+</div>
+<div class="callout"><strong>Evaporación vs. ebullición:</strong> la evaporación ocurre en la superficie y puede suceder a distintas temperaturas; la ebullición ocurre en todo el líquido cuando su presión de vapor iguala la presión externa.</div>
+<h3>Comprueba el sentido de las transformaciones</h3>
+<div class="controls"><label for="changePick">Cambio:</label><select id="changePick">
+<option value="fusion">Fusión</option><option value="solidificacion">Solidificación</option><option value="vaporizacion">Vaporización</option><option value="condensacion">Condensación</option><option value="sublimacion">Sublimación</option><option value="deposicion">Deposición</option></select><button id="changeBtn">Mostrar explicación</button></div>
+<div id="changeResult" class="callout">Fusión: sólido → líquido. El sistema absorbe energía.</div>
+</section>
+
+<section id="energia" class="section">
+<h2>4. Calor, temperatura y curvas de calentamiento</h2>
+<p>Al calentar una sustancia pura a presión constante, la temperatura suele aumentar dentro de una fase. Durante un cambio de estado, la energía suministrada puede emplearse en vencer interacciones entre partículas, por lo que la temperatura permanece aproximadamente constante.</p>
+<div class="grid">
+ <article class="card"><h3>Calor sensible</h3><p>La energía transferida cambia la temperatura sin cambiar la fase.</p><div class="formula">Q = m · c · ΔT</div><small>Q: calor; m: masa; c: calor específico; ΔT: variación de temperatura.</small></article>
+ <article class="card"><h3>Calor latente</h3><p>La energía transferida cambia la fase, sin variar la temperatura durante el cambio ideal de una sustancia pura.</p><div class="formula">Q = m · L</div><small>L: calor latente de fusión o vaporización, según el proceso.</small></article>
+</div>
+<h3>Curva de calentamiento: modelo del agua a 1 atm</h3>
+<p class="muted">Curva ideal simplificada. Los valores de referencia del agua pura son aproximadamente 0 °C para fusión y 100 °C para ebullición a 1 atm.</p>
+<canvas id="heatingCanvas" width="1000" height="380" aria-label="Curva de calentamiento del agua"></canvas>
+<div class="callout"><strong>Cómo leerla:</strong> tramos inclinados representan calentamiento dentro de una fase; tramos horizontales representan cambios de estado. En una muestra real pueden existir desviaciones por impurezas, pérdidas de calor y condiciones experimentales.</div>
+<details><summary>Ejemplo de cálculo de calor sensible</summary><p>¿Cuánto calor se necesita para elevar 200 g de agua de 20 °C a 50 °C? Usa c ≈ 4,18 J/(g·°C).</p><p class="formula">Q = 200 g × 4,18 J/(g·°C) × 30 °C = 25 080 J</p><p>Se requieren aproximadamente 25,1 kJ, sin considerar pérdidas.</p></details>
+</section>
+
+<section id="fases" class="section">
+<h2>5. Diagrama de fases</h2>
+<p>Un diagrama de fases muestra qué fase es estable según la <strong>temperatura</strong> y la <strong>presión</strong>. Las líneas separan regiones y representan condiciones donde dos fases pueden coexistir en equilibrio.</p>
+<div class="grid">
+ <article class="card"><h3>Punto triple</h3><p>Condiciones únicas de temperatura y presión en las que sólido, líquido y gas coexisten en equilibrio.</p></article>
+ <article class="card"><h3>Punto crítico</h3><p>Extremo de la curva líquido-gas. Por encima de la temperatura y presión críticas no hay una frontera definida entre líquido y gas; aparece un fluido supercrítico.</p></article>
+ <article class="card"><h3>Curvas de equilibrio</h3><p>Fusión: sólido-líquido. Vaporización: líquido-gas. Sublimación: sólido-gas.</p></article>
+</div>
+<h3>Diagrama esquemático interactivo: agua</h3>
+<p class="muted">Mueve los controles de temperatura y presión para ubicar un punto aproximado en el esquema. No se trata de un diagrama cuantitativo ni sirve para obtener valores experimentales.</p>
+<div class="controls"><label for="tempSlider">Temperatura: <strong id="tempVal">25 °C</strong></label><input id="tempSlider" type="range" min="-80" max="180" value="25" style="flex:1;min-width:150px"><label for="presSlider">Presión: <strong id="presVal">1,0 atm</strong></label><input id="presSlider" type="range" min="1" max="100" value="1" style="flex:1;min-width:150px"></div>
+<canvas id="phaseCanvas" width="1000" height="480" aria-label="Diagrama de fases esquemático del agua"></canvas>
+<div id="phaseDesc" class="callout">A temperatura ambiente y cerca de 1 atm, el agua se encuentra en fase líquida.</div>
+<div class="callout warn"><strong>Importante:</strong> el diagrama está simplificado para aprendizaje conceptual. La frontera sólido-líquido del agua tiene pendiente negativa en su diagrama real en un intervalo relevante, debido a que el hielo ordinario es menos denso que el agua líquida.</div>
+</section>
+
+<section id="agua" class="section">
+<h2>6. El agua: un caso especial</h2>
+<ul>
+<li>A 1 atm, el agua pura funde cerca de 0 °C y hierve cerca de 100 °C.</li>
+<li>La temperatura de ebullición disminuye al bajar la presión atmosférica; por eso el agua hierve a menor temperatura en lugares elevados.</li>
+<li>El hielo común es menos denso que el agua líquida, por lo que flota.</li>
+<li>Los puentes de hidrógeno contribuyen a su alto calor específico y a su elevado calor de vaporización en comparación con moléculas de masa similar.</li>
+<li>La presencia de solutos puede modificar las temperaturas de congelación y ebullición; los valores tabulados corresponden al agua pura bajo condiciones indicadas.</li>
+</ul>
+<table><thead><tr><th>Situación</th><th>Qué ocurre</th><th>Concepto asociado</th></tr></thead><tbody>
+<tr><td>Agua hirviendo en una olla abierta</td><td>El líquido pasa a vapor cuando alcanza la temperatura de ebullición correspondiente a la presión externa.</td><td>Ebullición y presión de vapor</td></tr>
+<tr><td>Gotas en la parte externa de una botella fría</td><td>El vapor de agua del aire se condensa sobre la superficie fría.</td><td>Condensación</td></tr>
+<tr><td>Escarcha sobre una superficie muy fría</td><td>El vapor pasa directamente a hielo.</td><td>Deposición</td></tr>
+<tr><td>Hielo seco en un recipiente ventilado</td><td>El CO₂ sólido pasa a gas a presión atmosférica.</td><td>Sublimación</td></tr>
+</tbody></table>
+</section>
+
+<section id="aplicaciones" class="section">
+<h2>7. Aplicaciones y conexiones con la vida diaria</h2>
+<div class="grid">
+ <article class="card"><h3>Refrigeración</h3><p>Un refrigerante se evapora y absorbe energía en una zona; después se comprime y condensa para liberar energía en otra.</p></article>
+ <article class="card"><h3>Destilación</h3><p>Se aprovechan diferencias de volatilidad y de equilibrio líquido-vapor para separar componentes de una mezcla.</p></article>
+ <article class="card"><h3>Clima y ciclo del agua</h3><p>Evaporación, condensación, congelación y fusión redistribuyen energía y agua en el ambiente.</p></article>
+ <article class="card"><h3>Materiales y petróleo</h3><p>La fase de hidrocarburos como pentano, heptadecano u octadecano depende de temperatura, presión y estructura molecular.</p></article>
+</div>
+<h3>Actividad de aplicación</h3>
+<p>Un recipiente cerrado contiene agua líquida y vapor en equilibrio. Si aumenta la temperatura, ¿qué puede suceder? Selecciona una respuesta.</p>
+<div class="controls"><select id="appPick"><option value="">Selecciona…</option><option value="a">Aumenta la presión de vapor y puede cambiar la proporción entre líquido y vapor.</option><option value="b">La sustancia deja de ser agua.</option><option value="c">La temperatura siempre permanece en 100 °C.</option></select><button id="appBtn">Verificar</button></div><div id="appResult" class="result"></div>
+</section>
+
+<section id="evaluacion" class="section">
+<h2>8. Evaluación interactiva</h2>
+<p>Responde las preguntas y pulsa <strong>Calificar</strong>. Recibirás retroalimentación para repasar los conceptos.</p>
+<form id="quiz">
+<div class="quizq"><strong>1. ¿Qué característica describe mejor un sólido?</strong><div class="answers"><label><input type="radio" name="q1" value="a"> Se expande para llenar cualquier recipiente.</label><label><input type="radio" name="q1" value="b"> Tiene forma y volumen definidos en condiciones ordinarias.</label><label><input type="radio" name="q1" value="c"> Sus partículas están completamente libres y muy separadas.</label></div><div class="feedback" id="f1"></div></div>
+<div class="quizq"><strong>2. ¿Qué cambio es líquido → gas?</strong><div class="answers"><label><input type="radio" name="q2" value="a"> Condensación</label><label><input type="radio" name="q2" value="b"> Solidificación</label><label><input type="radio" name="q2" value="c"> Vaporización</label></div><div class="feedback" id="f2"></div></div>
+<div class="quizq"><strong>3. Durante la fusión ideal de una sustancia pura, a presión constante:</strong><div class="answers"><label><input type="radio" name="q3" value="a"> La temperatura permanece aproximadamente constante mientras se absorbe energía.</label><label><input type="radio" name="q3" value="b"> La sustancia pierde toda su energía.</label><label><input type="radio" name="q3" value="c"> Siempre aumenta la temperatura de forma continua.</label></div><div class="feedback" id="f3"></div></div>
+<div class="quizq"><strong>4. ¿Qué expresa Q = m·c·ΔT?</strong><div class="answers"><label><input type="radio" name="q4" value="a"> Calor latente de cambio de fase</label><label><input type="radio" name="q4" value="b"> Calor sensible en un cambio de temperatura</label><label><input type="radio" name="q4" value="c"> La presión crítica</label></div><div class="feedback" id="f4"></div></div>
+<div class="quizq"><strong>5. ¿Qué representa el punto triple?</strong><div class="answers"><label><input type="radio" name="q5" value="a"> La temperatura de ebullición en cualquier presión</label><label><input type="radio" name="q5" value="b"> El límite entre gas y fluido supercrítico únicamente</label><label><input type="radio" name="q5" value="c"> Condiciones donde sólido, líquido y gas coexisten en equilibrio</label></div><div class="feedback" id="f5"></div></div>
+<div class="quizq"><strong>6. ¿Por qué el agua puede hervir a una temperatura menor en una montaña?</strong><div class="answers"><label><input type="radio" name="q6" value="a"> Porque la presión atmosférica es menor.</label><label><input type="radio" name="q6" value="b"> Porque el agua se convierte en otra sustancia.</label><label><input type="radio" name="q6" value="c"> Porque la gravedad desaparece.</label></div><div class="feedback" id="f6"></div></div>
+<div class="quizq"><strong>7. ¿Cuál es un ejemplo de deposición?</strong><div class="answers"><label><input type="radio" name="q7" value="a"> Hielo que se derrite</label><label><input type="radio" name="q7" value="b"> Formación de escarcha a partir del vapor</label><label><input type="radio" name="q7" value="c"> Agua que se evapora de un charco</label></div><div class="feedback" id="f7"></div></div>
+<div class="quizq"><strong>8. ¿Qué es un fluido supercrítico?</strong><div class="answers"><label><input type="radio" name="q8" value="a"> Un sólido a muy baja temperatura</label><label><input type="radio" name="q8" value="b"> Una mezcla de sólido y líquido siempre visible</label><label><input type="radio" name="q8" value="c"> Un fluido por encima de su temperatura y presión críticas, sin frontera líquido-gas definida</label></div><div class="feedback" id="f8"></div></div>
+<div class="controls"><button type="button" id="gradeBtn">Calificar evaluación</button><button type="reset" class="secondary" id="resetBtn">Reiniciar</button></div>
+<div id="score" class="result" aria-live="polite"></div>
+</form>
+</section>
+<section class="section">
+<h2>9. Síntesis para estudiar</h2>
+<ul>
+<li>El estado depende de la temperatura, la presión, la estructura y las interacciones de las partículas.</li>
+<li>Fusión, vaporización y sublimación absorben energía; solidificación, condensación y deposición la liberan.</li>
+<li>El calor sensible cambia la temperatura; el calor latente acompaña el cambio de fase.</li>
+<li>Las fronteras de un diagrama de fases representan coexistencia en equilibrio.</li>
+<li>Los puntos triple y crítico describen condiciones particulares del equilibrio de fases.</li>
+</ul>
+<div class="callout"><strong>Pregunta de reflexión:</strong> ¿por qué una prenda mojada puede secarse sin que el agua alcance los 100 °C? Relaciona tu explicación con la evaporación, el movimiento molecular y la energía transferida.</div>
+</section>
+</main>
+<footer><div class="wrap">Guía interactiva de Química · Dirección del proyecto: Alberto Luis Sánchez Flórez</div></footer>
+<script>
+const particleBox=document.getElementById('particleBox');
+const descriptions={solid:'En un sólido, las partículas están próximas y ordenadas; vibran alrededor de posiciones relativamente fijas.',liquid:'En un líquido, las partículas siguen próximas, pero pueden cambiar de posición y deslizarse unas junto a otras.',gas:'En un gas, las partículas están muy separadas y se distribuyen por todo el recipiente.',plasma:'El plasma contiene partículas cargadas. El color de este esquema solo las distingue visualmente; no representa una escala física.'};
+function drawParticles(){const s=document.getElementById('statePick').value;particleBox.innerHTML='';let pts=[];if(s==='solid'){for(let r=0;r<5;r++)for(let c=0;c<8;c++)pts.push([9+c*11,15+r*17])}else if(s==='liquid'){for(let i=0;i<40;i++)pts.push([4+Math.random()*91,15+Math.random()*70])}else{for(let i=0;i<25;i++)pts.push([3+Math.random()*94,4+Math.random()*88])}pts.forEach((p,i)=>{let d=document.createElement('span');d.className='dot';d.style.left=p[0]+'%';d.style.top=p[1]+'%';if(s==='plasma'){d.style.background=i%2?'#ffbd69':'#a8f0d2';d.style.boxShadow=i%2?'0 0 12px #ffbd69':'0 0 12px #a8f0d2'}particleBox.appendChild(d)});document.getElementById('particleDesc').textContent=descriptions[s]}
+document.getElementById('statePick').addEventListener('change',drawParticles);document.getElementById('particleBtn').addEventListener('click',drawParticles);drawParticles();
+const changes={fusion:['Sólido → líquido','Absorbe energía. Ejemplo: hielo que se derrite.'],solidificacion:['Líquido → sólido','Libera energía. Ejemplo: agua que se congela.'],vaporizacion:['Líquido → gas','Absorbe energía. Puede ocurrir por evaporación o ebullición.'],condensacion:['Gas → líquido','Libera energía. Ejemplo: vapor que forma gotas en una superficie fría.'],sublimacion:['Sólido → gas','Absorbe energía. Ejemplo: dióxido de carbono sólido que sublima a presión atmosférica.'],deposicion:['Gas → sólido','Libera energía. Ejemplo: vapor que forma escarcha.']};
+document.getElementById('changeBtn').addEventListener('click',()=>{let c=changes[document.getElementById('changePick').value];document.getElementById('changeResult').innerHTML='<strong>'+c[0]+'</strong><br>'+c[1]});
+document.getElementById('appBtn').addEventListener('click',()=>{const v=document.getElementById('appPick').value;const r=document.getElementById('appResult');r.textContent=v==='a'?'Correcto. Aumentar la temperatura modifica la presión de vapor y el equilibrio entre las fases.':v?'No es correcto. Revisa la relación entre temperatura, presión de vapor y equilibrio líquido-vapor.':'Selecciona una opción.';r.className='result '+(v==='a'?'correct':'incorrect')});
+function drawHeating(){const c=document.getElementById('heatingCanvas'),ctx=c.getContext('2d'),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);ctx.strokeStyle='#285342';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(85,25);ctx.lineTo(85,h-65);ctx.lineTo(w-35,h-65);ctx.stroke();ctx.fillStyle='#b4cfc1';ctx.font='20px system-ui';ctx.fillText('Temperatura (°C)',20,24);ctx.fillText('Energía suministrada →',w-280,h-20);let pts=[[105,h-100],[260,h-160],[420,h-160],[590,h-265],[750,h-265],[900,55]];ctx.strokeStyle='#37d49a';ctx.lineWidth=5;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();pts.forEach((p,i)=>{ctx.fillStyle='#d3f36b';ctx.beginPath();ctx.arc(p[0],p[1],6,0,Math.PI*2);ctx.fill()});ctx.fillStyle='#a8f0d2';ctx.font='bold 18px system-ui';ctx.fillText('Hielo',145,h-130);ctx.fillText('Fusión',305,h-180);ctx.fillText('Agua líquida',465,h-215);ctx.fillText('Ebullición',625,h-285);ctx.fillText('Vapor',820,38);ctx.fillStyle='#b4cfc1';ctx.font='15px system-ui';ctx.fillText('0 °C',35,h-155);ctx.fillText('100 °C',25,h-280)}
+drawHeating();
+const ts=document.getElementById('tempSlider'),ps=document.getElementById('presSlider');
+function drawPhase(){const c=document.getElementById('phaseCanvas'),ctx=c.getContext('2d'),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);const L=90,R=w-45,T=35,B=h-65;ctx.strokeStyle='#b4cfc1';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(L,T);ctx.lineTo(L,B);ctx.lineTo(R,B);ctx.stroke();ctx.fillStyle='#b4cfc1';ctx.font='19px system-ui';ctx.fillText('Presión (esquemática)',15,24);ctx.fillText('Temperatura →',R-190,h-20);ctx.fillStyle='#123e2c';ctx.fillRect(L+2,T+2,(R-L)*.33,B-T-2);ctx.fillStyle='#174d38';ctx.fillRect(L+(R-L)*.33,T+2,(R-L)*.32,B-T-2);ctx.fillStyle='#0c3028';ctx.fillRect(L+(R-L)*.65,T+2,(R-L)*.35,B-T-2);ctx.strokeStyle='#d3f36b';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(L+100,B-5);ctx.lineTo(L+260,T+150);ctx.stroke();ctx.strokeStyle='#37d49a';ctx.beginPath();ctx.moveTo(L+260,T+150);ctx.bezierCurveTo(L+390,T+100,L+500,T+95,R-60,T+70);ctx.stroke();ctx.strokeStyle='#a8f0d2';ctx.beginPath();ctx.moveTo(L+100,B-5);ctx.bezierCurveTo(L+180,B-140,L+220,T+180,L+260,T+150);ctx.stroke();ctx.fillStyle='#edf9f2';ctx.font='bold 24px system-ui';ctx.fillText('Sólido',L+40,B-35);ctx.fillText('Líquido',L+320,T+85);ctx.fillText('Gas',R-130,B-50);ctx.fillStyle='#ffbd69';ctx.beginPath();ctx.arc(L+260,T+150,8,0,Math.PI*2);ctx.fill();ctx.fillText('Punto triple*',L+275,T+155);const temp=+ts.value,pressure=+ps.value;const x=L+((temp+80)/260)*(R-L);const y=B-(Math.log10(pressure)/2)*(B-T);ctx.fillStyle='#ff8585';ctx.beginPath();ctx.arc(x,Math.max(T+8,Math.min(B-8,y)),10,0,Math.PI*2);ctx.fill();document.getElementById('tempVal').textContent=temp+' °C';document.getElementById('presVal').textContent=(pressure/10).toFixed(1).replace('.',',')+' atm (escala didáctica)';let state;if(temp<0)state='A temperaturas bajo 0 °C y en condiciones ordinarias, el agua suele estar en fase sólida.';else if(temp<100)state='A esta temperatura y cerca de 1 atm, el agua suele estar en fase líquida.';else state='A esta temperatura y cerca de 1 atm, el agua suele estar en fase gaseosa.';document.getElementById('phaseDesc').textContent=state+' El punto rojo indica la condición seleccionada de forma aproximada; las fronteras del dibujo no son cuantitativas.'}
+ts.addEventListener('input',drawPhase);ps.addEventListener('input',drawPhase);drawPhase();
+const keys={q1:'b',q2:'c',q3:'a',q4:'b',q5:'c',q6:'a',q7:'b',q8:'c'};
+const explain={q1:'Un sólido conserva forma y volumen definidos en condiciones ordinarias.',q2:'La vaporización transforma líquido en gas.',q3:'Durante la fusión de una sustancia pura a presión constante, el calor absorbido se emplea en el cambio de fase.',q4:'Q = m·c·ΔT relaciona calor, masa, calor específico y cambio de temperatura.',q5:'En el punto triple coexisten las tres fases en equilibrio.',q6:'La menor presión atmosférica reduce la temperatura de ebullición.',q7:'La deposición transforma gas directamente en sólido.',q8:'Por encima de las condiciones críticas no existe una frontera líquido-gas definida.'};
+document.getElementById('gradeBtn').addEventListener('click',()=>{let score=0;for(let i=1;i<=8;i++){let q='q'+i,sel=document.querySelector('input[name="'+q+'"]:checked'),f=document.getElementById('f'+i);if(sel&&sel.value===keys[q]){score++;f.textContent='Correcto. '+explain[q];f.className='feedback correct'}else{f.textContent='Respuesta correcta: '+({q1:'B',q2:'C',q3:'A',q4:'B',q5:'C',q6:'A',q7:'B',q8:'C'}[q])+'. '+explain[q];f.className='feedback incorrect'}}document.getElementById('score').textContent='Resultado: '+score+'/8 ('+Math.round(score/8*100)+'%).';document.getElementById('score').className='result '+(score>=6?'correct':'incorrect')});
+document.getElementById('resetBtn').addEventListener('click',()=>{setTimeout(()=>{for(let i=1;i<=8;i++){let f=document.getElementById('f'+i);f.textContent='';f.className='feedback'}document.getElementById('score').textContent='';},0)});
+</script>
+
+<footer class="rumbo-foot">
+  <div>
+    <a href="../index.html">RUMBO EDUCA</a>
+    <a href="index.html">Ciencias</a>
+    <a href="../resiliencia/">Resiliencia</a>
+    <a href="../orientacion/">Vocacional</a>
+    <a href="../admin/">Admin</a>
+  </div>
+  <div class="sub">Laboratorio de aprendizaje y orientación · Una iniciativa de OAKTREESKY</div>
+</footer>
+
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123D32">
+<meta name="description" content="RUMBO EDUCA — Laboratorio de aprendizaje y orientación. Orientación vocacional, resiliencia y guías interactivas de química. Una iniciativa de OAKTREESKY.">
+<title>RUMBO EDUCA | Laboratorio de aprendizaje y orientación</title>
+<style>
+:root{--green:#123D32;--green2:#1e5a49;--gold:#b69a5d;--cream:#f6f5f0;--ink:#1d2a25;--muted:#637169;--white:#fff;--line:#e2e7e1;--mint:#e8f0eb;--radius:22px;--shadow:0 14px 40px rgba(18,61,50,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.6}a{color:inherit;text-decoration:none}button,a{ -webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.topbar{background:var(--green);color:#e9f1eb;text-align:center;padding:8px 16px;font-size:.82rem;letter-spacing:.02em}.header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(226,231,225,.85)}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:11px;min-width:max-content}.brandmark{width:43px;height:43px;border-radius:14px;background:var(--green);display:grid;place-items:center;color:#f4e6bd}.brandname{font-weight:850;font-size:1.15rem;letter-spacing:.035em;color:var(--green);line-height:1.15}.brandtag{display:block;font-size:.63rem;color:var(--muted);letter-spacing:.12em;margin-top:4px;font-weight:650}.navlinks{display:flex;align-items:center;gap:24px;font-size:.91rem;color:#3f5148}.navlinks a:hover{color:var(--green2)}.navcta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:12px 19px;font-weight:750;font-size:.91rem;transition:transform .2s,box-shadow .2s,background .2s;border:1px solid transparent;cursor:pointer}.navcta,.btn.primary{background:var(--green);color:white;box-shadow:0 6px 16px rgba(18,61,50,.14)}.btn.secondary{border-color:#cbd8cf;color:var(--green);background:white}.btn:hover,.navcta:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.menu-toggle{display:none;background:white;border:1px solid var(--line);border-radius:12px;padding:9px;color:var(--green);font-size:1.1rem}.hero{background:radial-gradient(circle at 85% 20%,rgba(182,154,93,.15),transparent 26%),linear-gradient(120deg,#f6f5f0 0%,#fbfcf8 62%,#eaf2ec 100%);overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:50px;padding:78px 0 82px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green2);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800}.eyebrow:before{content:"";height:2px;width:25px;background:var(--gold)}h1{font-size:clamp(2.7rem,5.2vw,4.7rem);line-height:1.04;letter-spacing:-.055em;color:var(--green);margin:18px 0 20px;font-weight:850}h1 em{font-style:normal;color:var(--gold)}.hero p{font-size:1.12rem;max-width:600px;color:#53635a;margin:0 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap}.microtrust{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.85rem;margin-top:25px}.microtrust .dot{width:8px;height:8px;background:#73a18b;border-radius:50%;box-shadow:0 0 0 5px #dcebe0}.hero-art{min-height:360px;display:grid;place-items:center;position:relative}.orbit{width:min(100%,390px);aspect-ratio:1;border:1px solid rgba(18,61,50,.15);border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#fff 0%,#f0f4ed 63%,rgba(232,240,235,.15) 64%)}.orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed rgba(18,61,50,.22);border-radius:50%;inset:11%}.orbit:after{inset:22%;border-style:solid;opacity:.6}.compass{width:44%;aspect-ratio:1;border-radius:28%;background:var(--green);display:grid;place-items:center;box-shadow:0 22px 50px rgba(18,61,50,.23);transform:rotate(-8deg);z-index:1}.compass svg{width:64%;height:64%}.float-card{position:absolute;background:#fff;border:1px solid rgba(226,231,225,.9);box-shadow:var(--shadow);padding:13px 16px;border-radius:16px;display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:750;color:var(--green)}.float-card span:first-child{width:34px;height:34px;border-radius:11px;background:var(--mint);display:grid;place-items:center;font-size:1.1rem}.fc1{top:8%;left:-1%}.fc2{right:-3%;top:35%}.fc3{left:5%;bottom:7%}.section{padding:76px 0}.section.soft{background:#f8faf7}.section-head{max-width:680px;margin-bottom:32px}.section-head.center{text-align:center;margin-left:auto;margin-right:auto}.section-head h2{font-size:clamp(1.9rem,3.3vw,2.75rem);line-height:1.15;letter-spacing:-.035em;color:var(--green);margin:10px 0 12px}.section-head p{color:var(--muted);margin:0;font-size:1.02rem}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{border:1px solid var(--line);border-radius:var(--radius);padding:25px;background:white;min-height:240px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}.product:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#c5d6c9}.product-icon{width:52px;height:52px;border-radius:16px;background:var(--mint);display:grid;place-items:center;color:var(--green);margin-bottom:18px}.product-icon svg{width:25px;height:25px}.product h3{margin:0 0 8px;font-size:1.15rem;color:var(--green)}.product p{margin:0 0 18px;color:var(--muted);font-size:.93rem}.product .link{margin-top:auto;font-weight:800;font-size:.9rem;color:var(--green2);display:inline-flex;align-items:center;gap:7px}.product .soon{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#8b7441;font-weight:800;margin-top:auto}.feature-band{background:var(--green);color:white;border-radius:28px;padding:40px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}.feature-band h2{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.12;margin:12px 0}.feature-band p{color:#d5e2d9;margin:0;max-width:560px}.feature-list{display:grid;gap:13px}.feature-row{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:14px}.check{flex:0 0 27px;width:27px;height:27px;display:grid;place-items:center;background:#dcebdc;color:var(--green);border-radius:50%;font-weight:900}.feature-row strong{display:block;font-size:.94rem}.feature-row small{color:#d5e2d9;font-size:.83rem}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.step{padding:22px 4px}.step-num{font-size:.78rem;color:var(--gold);font-weight:900;letter-spacing:.1em}.step h3{color:var(--green);margin:8px 0}.step p{color:var(--muted);margin:0;font-size:.94rem}.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px;align-items:center}.about-symbol{background:linear-gradient(145deg,#eaf1e9,#f8f5eb);border-radius:26px;min-height:280px;display:grid;place-items:center}.about-symbol .brandmark{width:110px;height:110px;border-radius:32px}.about-symbol svg{width:68px;height:68px}.about h2{font-size:2.3rem;line-height:1.12;letter-spacing:-.04em;color:var(--green);margin:10px 0 16px}.about p{color:var(--muted)}.quote{border-left:3px solid var(--gold);padding-left:17px;color:var(--green)!important;font-weight:700}.cta{background:var(--cream);padding:58px 0}.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}.cta h2{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.12;color:var(--green);margin:0 0 10px}.cta p{margin:0;color:var(--muted)}footer{background:#0c2d25;color:#d9e4dc;padding:36px 0 22px}.footer-main{display:flex;justify-content:space-between;gap:35px;align-items:flex-start}.footer-brand{color:#fff;font-weight:850;font-size:1.15rem;letter-spacing:.03em}.footer-desc{max-width:400px;color:#b8c9be;font-size:.9rem}.footerlinks{display:flex;flex-wrap:wrap;gap:17px;font-size:.88rem}.footerlinks a:hover{color:#fff}.copyright{border-top:1px solid rgba(255,255,255,.13);margin-top:28px;padding-top:18px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:.78rem;color:#aebfb4}.note{font-size:.8rem;color:var(--muted)}
+@media(max-width:850px){.navlinks{gap:14px}.navlinks a:not(.navcta){display:none}.hero-grid{grid-template-columns:1fr;gap:18px;padding:58px 0}.hero-art{min-height:330px}.orbit{width:320px}.grid{grid-template-columns:repeat(2,1fr)}.feature-band{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:24px}.about-symbol{min-height:210px}.about-symbol .brandmark{width:88px;height:88px}.about-symbol svg{width:56px;height:56px}}
+@media(max-width:560px){.wrap{width:min(100% - 30px,1120px)}.topbar{font-size:.74rem}.nav{min-height:68px}.brandmark{width:39px;height:39px}.brandname{font-size:1rem}.brandtag{font-size:.56rem}.navcta{padding:10px 12px;font-size:.82rem}.menu-toggle{display:block}.navlinks{gap:8px}.navlinks.open{position:absolute;top:68px;left:0;right:0;background:#fff;padding:16px 20px 22px;display:flex;align-items:stretch;flex-direction:column;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}.navlinks.open a:not(.navcta){display:block;padding:8px 0}.navlinks.open .navcta{text-align:center}.hero-grid{padding:47px 0 42px}.hero p{font-size:1rem}.hero-art{min-height:280px}.orbit{width:260px}.float-card{font-size:.73rem;padding:9px 10px}.float-card span:first-child{width:28px;height:28px}.fc1{left:-2%;top:4%}.fc2{right:-2%;top:38%}.fc3{left:0;bottom:2%}.section{padding:55px 0}.grid{grid-template-columns:1fr}.product{min-height:unset}.feature-band{padding:25px;border-radius:22px}.steps{grid-template-columns:1fr;gap:2px}.step{padding:15px 0}.about h2{font-size:2rem}.cta-inner{align-items:flex-start;flex-direction:column}.footer-main{flex-direction:column}.copyright{flex-direction:column}.actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">Laboratorio de aprendizaje y orientación · Una iniciativa de OAKTREESKY</div>
+<header class="header">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="RUMBO EDUCA, inicio">
+      <span class="brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 5 29 20 43 24 29 28 24 43 19 28 5 24 19 20 24 5Z" stroke="#F4E6BD" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 15 27 24 24 33 21 24 24 15Z" fill="#F4E6BD"/><circle cx="24" cy="24" r="3" fill="#123D32" stroke="#F4E6BD" stroke-width="1.5"/></svg></span>
+      <span><span class="brandname">RUMBO EDUCA</span><span class="brandtag">LABORATORIO DE APRENDIZAJE Y ORIENTACIÓN</span></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" id="menuToggle">☰</button>
+    <nav class="navlinks" id="navLinks" aria-label="Navegación principal">
+      <a href="#explora">Explora</a><a href="ciencias/">Ciencias</a><a href="#metodo">Cómo funciona</a><a href="#nosotros">Nuestra visión</a>
+      <a class="navcta" href="orientacion/">Entrar a RUMBO VOCACIONAL ↗</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Tu aprendizaje, tu camino</span>
+      <h1>Descubre tu potencial.<br><em>Construye tu camino.</em></h1>
+      <p>Orientación vocacional, resiliencia y experiencias de aprendizaje interactivas para ayudarte a conocerte, desarrollar tus capacidades y tomar decisiones con mayor confianza.</p>
+      <div class="actions"><a class="btn primary" href="#explora">Explorar experiencias <span aria-hidden="true">→</span></a><a class="btn secondary" href="orientacion/">Conocer RUMBO VOCACIONAL ↗</a></div>
+      <div class="microtrust"><span class="dot"></span> Educación con propósito, reflexión e innovación.</div>
+    </div>
+    <div class="hero-art" aria-label="Símbolo de orientación que representa el camino de aprendizaje">
+      <div class="orbit">
+        <div class="compass"><svg viewBox="0 0 100 100" fill="none"><path d="M50 8 63 42 92 50 63 58 50 92 37 58 8 50 37 42 50 8Z" stroke="#F4E6BD" stroke-width="3" stroke-linejoin="round"/><path d="M50 25 60 50 50 75 40 50 50 25Z" fill="#F4E6BD"/><circle cx="50" cy="50" r="5" fill="#123D32" stroke="#F4E6BD" stroke-width="2"/></svg></div>
+        <div class="float-card fc1"><span>✦</span> Autoconocimiento</div>
+        <div class="float-card fc2"><span>↗</span> Nuevas posibilidades</div>
+        <div class="float-card fc3"><span>◎</span> Aprendizaje activo</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="explora">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Explora RUMBO EDUCA</span>
+      <h2>Encuentra la experiencia que necesitas.</h2>
+      <p>Una plataforma integral que reúne diferentes caminos para aprender, reflexionar y desarrollar habilidades.</p>
+    </div>
+    <div class="grid">
+      <article class="product">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"/><path d="M8 12h2l1.2-2.5L13 15l1.2-3H16"/></svg></div>
+        <h3>RUMBO RESILIENCIA</h3><p>Reflexiona sobre tus recursos personales, reconoce fortalezas y construye un plan de crecimiento.</p>
+        <a class="link" href="resiliencia/">Realizar test de resiliencia <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="product">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M8 7h8M8 11h6"/></svg></div>
+        <h3>RUMBO SABER 11</h3><p>Practica competencias académicas con recursos y retos de aprendizaje.</p>
+        <span class="soon">En expansión</span>
+      </article>
+      <article class="product">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 11H3v6h3l4 3V8l-4 3Z"/><path d="M14 9a5 5 0 0 1 0 10M16 5a9 9 0 0 1 0 18"/></svg></div>
+        <h3>RUMBO PLAY</h3><p>Aprende mediante juegos, misiones, desafíos y experiencias gamificadas.</p>
+        <a class="link" href="play/elementum-modelos.html">Jugar Elementum · Modelos atómicos <span aria-hidden="true">→</span></a>
+        <a class="link" href="play/mision-laboratorio.html">Jugar MISIÓN LABORATORIO 3.0 · Química PREICFES <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="product">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a4 4 0 0 0-4 4v1a4 4 0 0 0-3 4 4 4 0 0 0 3 4v1a4 4 0 0 0 8 0v-1a4 4 0 0 0 3-4 4 4 0 0 0-3-4V7a4 4 0 0 0-4-4Z"/><path d="M9 9h.01M15 9h.01M9 14h6"/></svg></div>
+        <h3>RUMBO IA</h3><p>Explora nuevas formas de aprender con herramientas digitales e inteligencia artificial.</p>
+        <span class="soon">Línea en desarrollo</span>
+      </article>
+      <article class="product">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M8 15h8M9 18h6"/></svg></div>
+        <h3>RUMBO CIENCIAS</h3><p>Descubre química y ciencias mediante guías, simulaciones y laboratorios interactivos.</p>
+        <a class="link" href="ciencias/">Explorar 12 guías de química <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+    <p class="note" style="margin-top:18px">Las líneas que aún no tienen enlace activo se presentan como parte de la hoja de ruta y no como servicios ya publicados.</p>
+  </div>
+</section>
+<section class="section soft" id="metodo">
+  <div class="wrap">
+    <div class="feature-band">
+      <div><span class="eyebrow" style="color:#d8c18a">Nuestra forma de aprender</span><h2>Aprender haciendo.<br>Crecer reflexionando.</h2><p>Creemos en experiencias que invitan a explorar, practicar, comprender y convertir lo aprendido en acciones concretas.</p></div>
+      <div class="feature-list">
+        <div class="feature-row"><span class="check">✓</span><div><strong>Autoconocimiento</strong><small>Reconocer intereses, capacidades y oportunidades de crecimiento.</small></div></div>
+        <div class="feature-row"><span class="check">✓</span><div><strong>Aprendizaje activo</strong><small>Participar, experimentar, resolver retos y recibir retroalimentación.</small></div></div>
+        <div class="feature-row"><span class="check">✓</span><div><strong>Resiliencia y propósito</strong><small>Desarrollar recursos personales y planear próximos pasos.</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow">Tu recorrido</span><h2>Un rumbo comienza con un primer paso.</h2><p>Explora la plataforma a tu ritmo y elige una experiencia que se conecte con tus metas.</p></div>
+    <div class="steps">
+      <div class="step"><span class="step-num">PASO 01</span><h3>Explora</h3><p>Encuentra la experiencia, el recurso o el reto que responde a tu interés.</p></div>
+      <div class="step"><span class="step-num">PASO 02</span><h3>Participa</h3><p>Realiza actividades, responde preguntas y reflexiona sobre lo que descubres.</p></div>
+      <div class="step"><span class="step-num">PASO 03</span><h3>Avanza</h3><p>Convierte tus aprendizajes en ideas y acciones para continuar creciendo.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section soft" id="nosotros">
+  <div class="wrap about">
+    <div class="about-symbol"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 5 29 20 43 24 29 28 24 43 19 28 5 24 19 20 24 5Z" stroke="#F4E6BD" stroke-width="2.4" stroke-linejoin="round"/><path d="M24 15 27 24 24 33 21 24 24 15Z" fill="#F4E6BD"/><circle cx="24" cy="24" r="3" fill="#123D32" stroke="#F4E6BD" stroke-width="1.5"/></svg></span></div>
+    <div><span class="eyebrow">Nuestra visión</span><h2>La educación puede abrir nuevos caminos.</h2><p>RUMBO EDUCA nace de una visión pedagógica que conecta conocimiento, autoconocimiento, resiliencia e innovación. Su propósito es reunir recursos útiles para estudiantes y comunidades educativas en una experiencia digital clara y accesible.</p><p class="quote">No se trata solo de encontrar respuestas, sino de descubrir mejores preguntas y construir posibilidades.</p></div>
+  </div>
+</section>
+<section class="cta">
+  <div class="wrap cta-inner"><div><h2>¿Listo para explorar tu rumbo?</h2><p>Comienza con RUMBO VOCACIONAL y descubre la plataforma.</p></div><a class="btn primary" href="orientacion/">Entrar a RUMBO VOCACIONAL ↗</a></div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footer-main"><div><div class="footer-brand">RUMBO EDUCA</div><div class="footer-desc">Laboratorio de aprendizaje y orientación.<br>Aprende. Descubre. Transforma.<br><span style="opacity:.8">Una iniciativa de OAKTREESKY</span></div></div><nav class="footerlinks" aria-label="Enlaces del pie de página"><a href="#inicio">Inicio</a><a href="#explora">Explora</a><a href="ciencias/">Ciencias</a><a href="#metodo">Cómo funciona</a><a href="#nosotros">Nuestra visión</a><a href="orientacion/">RUMBO VOCACIONAL ↗</a><a href="admin/" style="opacity:.7">Admin</a></nav></div>
+    <div class="copyright"><span>© <span id="year"></span> RUMBO EDUCA. Contenido educativo.</span><span>Las experiencias de orientación son educativas y no sustituyen una evaluación profesional cuando esta sea necesaria.</span></div>
+  </div>
+</footer>
+<script>
+const toggle=document.getElementById('menuToggle'), links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰';});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';}));
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

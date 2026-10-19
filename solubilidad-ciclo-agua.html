@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curvas de solubilidad | RUMBO CIENCIAS</title>
+<meta name="theme-color" content="#123D32">
+<style>
+:root{--bg:#071b16;--panel:#0d2a21;--panel2:#12382b;--green:#37d49a;--mint:#a8f0d2;--lime:#d3f36b;--text:#edf9f2;--muted:#b4cfc1;--line:#285342;--orange:#ffbd69;--red:#ff8585;--blue:#80d9ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0%,#164b37 0,#071b16 40%,#04110e 100%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{padding:45px 18px 34px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(135deg,#0c3426ee,#071b16ee)}.wrap{max-width:1160px;margin:auto;padding:0 16px}.eyebrow{color:var(--lime);text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:.78rem}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.12;margin:.5rem 0 1rem}h2{color:var(--mint);font-size:1.65rem;margin-top:0}h3{color:var(--lime);margin:.3rem 0 .6rem}.lead{max-width:850px;margin:auto;color:var(--muted);font-size:1.08rem}.credit{margin-top:18px;color:var(--mint);font-weight:700}
+nav{position:sticky;top:0;z-index:10;background:#061710ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);overflow-x:auto}nav .wrap{display:flex;gap:7px;padding-top:9px;padding-bottom:9px;white-space:nowrap}nav a{color:var(--muted);text-decoration:none;padding:7px 10px;border:1px solid transparent;border-radius:999px;font-size:.86rem}nav a:hover{border-color:var(--green);color:white;background:#103b2b}
+main{padding:25px 0 55px}.section{margin:22px 0 29px;padding:25px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#0d2a21ee,#081d17ee);box-shadow:0 14px 35px #0002;scroll-margin-top:75px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}.card{background:#103528;border:1px solid #285a43;border-radius:16px;padding:17px}.card p{color:var(--muted)}.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#194c38;color:var(--mint);font-size:.8rem;font-weight:700}.callout{padding:14px 16px;border-left:4px solid var(--green);background:#123729;border-radius:8px;margin:14px 0}.warn{border-left-color:var(--orange);background:#352b1b}.formula{font-size:1.08rem;font-weight:800;color:var(--lime)}.muted,small{color:var(--muted)}table{width:100%;border-collapse:collapse;margin:12px 0}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#174632;color:var(--mint)}td{background:#0c261d}button,select,input{font:inherit}button{border:0;border-radius:10px;background:var(--green);color:#062117;padding:10px 14px;font-weight:800;cursor:pointer}button:hover{filter:brightness(1.08)}button.secondary{background:#194c38;color:var(--text);border:1px solid #357557}select,input[type=number]{background:#071b16;color:var(--text);border:1px solid #357557;border-radius:10px;padding:9px;max-width:100%}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0}.controls label{color:var(--muted)}canvas{width:100%;display:block;background:#061811;border:1px solid #2a5c45;border-radius:14px}.chart{height:390px}.waterchart{height:360px}.result{padding:12px 14px;border-radius:10px;background:#0a2118;margin-top:10px}.good{color:var(--green)}.bad{color:var(--orange)}.quizq{padding:15px;border-radius:14px;background:#0d2b21;border:1px solid var(--line);margin:13px 0}.answers{display:grid;gap:8px;margin-top:10px}.answers label{display:flex;gap:9px;align-items:flex-start;background:#12382b;border:1px solid #285342;padding:10px;border-radius:10px;cursor:pointer}.answers label:hover{border-color:var(--green)}details{background:#0b251b;border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin:10px 0}summary{cursor:pointer;color:var(--mint);font-weight:700}.cycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.step{border:1px solid #2b6149;background:#103528;border-radius:15px;padding:15px;text-align:center}.step .num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;margin:0 auto 8px;background:var(--green);color:#062117;font-weight:900}.arrow{text-align:center;color:var(--lime);font-size:1.4rem;font-weight:900}footer{text-align:center;padding:28px 18px;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:600px){.section{padding:17px}.wrap{padding:0 11px}th,td{padding:7px;font-size:.9rem}.chart{height:320px}}
+
+
+/* === RUMBO EDUCA unified chrome === */
+.rumbo-topbar{background:#123D32;color:#e9f1eb;font-size:.78rem;text-align:center;padding:7px 12px;letter-spacing:.02em}
+.rumbo-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e2e7e1;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.rumbo-nav-inner{max-width:1100px;margin:0 auto;padding:0 16px;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rumbo-brand{display:flex;align-items:center;gap:10px;color:#123D32;text-decoration:none;font-weight:800;font-size:.95rem}
+.rumbo-brand .mark{width:34px;height:34px;border-radius:10px;background:#123D32;color:#f4e6bd;display:grid;place-items:center;font-size:.95rem;flex-shrink:0}
+.rumbo-brand .tag{display:block;font-size:.58rem;font-weight:650;color:#637169;letter-spacing:.1em;margin-top:2px}
+.rumbo-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rumbo-links a{text-decoration:none;color:#3f5148;font-size:.82rem;font-weight:650;padding:7px 11px;border-radius:999px;border:1px solid transparent}
+.rumbo-links a:hover{color:#123D32;background:#e8f0eb}
+.rumbo-links a.primary{background:#123D32;color:#fff;border-color:#123D32}
+.rumbo-links a.primary:hover{background:#1e5a49;color:#fff}
+.rumbo-foot{background:#0c2d25;color:#b8c9be;padding:18px 16px;text-align:center;font-size:.8rem;font-family:Inter,ui-sans-serif,system-ui,sans-serif;margin-top:32px}
+.rumbo-foot a{color:#e9f1eb;text-decoration:none;margin:0 8px;font-weight:650}
+.rumbo-foot a:hover{text-decoration:underline}
+.rumbo-foot .sub{opacity:.75;margin-top:6px;font-size:.72rem}
+@media(max-width:640px){
+  .rumbo-links a:not(.primary){display:none}
+  .rumbo-brand span:not(.mark){font-size:.85rem}
+}
+
+</style></head>
+<body>
+
+<div class="rumbo-topbar">RUMBO EDUCA · Laboratorio de aprendizaje y orientación · OAKTREESKY</div>
+<nav class="rumbo-nav" aria-label="Navegación RUMBO">
+  <div class="rumbo-nav-inner">
+    <a class="rumbo-brand" href="index.html">
+      <span class="mark" aria-hidden="true">⚗</span>
+      <span>RUMBO CIENCIAS<span class="tag">QUÍMICA · DÉCIMO Y UNDÉCIMO</span></span>
+    </a>
+    <div class="rumbo-links">
+      <a href="../index.html">Inicio</a>
+      <a href="index.html">Catálogo</a>
+      <a href="../resiliencia/">Resiliencia</a>
+      <a href="../orientacion/">Vocacional</a>
+      <a class="primary" href="index.html">← Guías</a>
+    </div>
+  </div>
+</nav>
+
+<header><div class="wrap"><div class="eyebrow">Química · Soluciones · Ambiente</div><h1>Curvas de solubilidad y ciclo del agua</h1><p class="lead">Guía interactiva para interpretar gráficas de solubilidad, comparar sustancias, resolver problemas de saturación y cristalización, comprender la solubilidad de los gases y conectar estos procesos con el ciclo hidrológico.</p><div class="credit">Dirección del proyecto: Alberto Luis Sánchez Flórez</div></div></header>
+<nav><div class="wrap"><a href="#conceptos">Conceptos</a><a href="#curvas">Curvas de solubilidad</a><a href="#simulador">Simulador</a><a href="#calculos">Cálculos</a><a href="#gases">Gases</a><a href="#agua">Ciclo del agua</a><a href="#relacion">Conexiones</a><a href="#evaluacion">Evaluación</a></div></nav>
+<main class="wrap">
+<section class="section" id="conceptos"><h2>1. Solubilidad: conceptos fundamentales</h2><p>Una solución es una mezcla homogénea formada por un <strong>solvente</strong> (componente que disuelve) y uno o más <strong>solutos</strong> (componentes disueltos). La solubilidad expresa la cantidad máxima de soluto que puede disolverse en una cantidad dada de solvente, bajo condiciones definidas de temperatura y presión, cuando se alcanza el equilibrio.</p>
+<div class="grid">
+<article class="card"><span class="tag">Insaturada</span><h3>Puede disolver más</h3><p>Contiene menos soluto disuelto que el máximo de equilibrio a esa temperatura.</p></article>
+<article class="card"><span class="tag">Saturada</span><h3>En equilibrio</h3><p>Contiene la cantidad de soluto correspondiente a la solubilidad en esas condiciones. Puede coexistir con soluto sin disolver.</p></article>
+<article class="card"><span class="tag">Sobresaturada</span><h3>Estado metaestable o inestable</h3><p>Contiene más soluto disuelto que el valor de equilibrio. Puede cristalizar si se perturba o aparecen núcleos de cristalización.</p></article>
+</div>
+<div class="callout"><strong>Unidad habitual en las curvas:</strong> gramos de soluto por cada 100 g de agua (g soluto / 100 g H₂O). No significa gramos por 100 g de solución. Comprueba siempre las unidades del gráfico o la tabla.</div>
+<h3>¿Qué factores afectan la solubilidad?</h3><div class="grid">
+<article class="card"><h3>Naturaleza química</h3><p>Las interacciones soluto-solvente importan. Como regla orientativa, sustancias polares o iónicas suelen disolverse mejor en solventes polares; sustancias apolares, en solventes apolares.</p></article>
+<article class="card"><h3>Temperatura</h3><p>En muchos sólidos la solubilidad aumenta al subir la temperatura, pero hay excepciones. En numerosos gases disueltos en líquidos, suele disminuir al aumentar la temperatura.</p></article>
+<article class="card"><h3>Presión</h3><p>Influye especialmente en gases disueltos. A temperatura constante, elevar la presión parcial del gas sobre el líquido suele aumentar su solubilidad.</p></article>
+<article class="card"><h3>Agitación y tamaño de partícula</h3><p>Pueden acelerar la velocidad de disolución, pero no suelen cambiar la solubilidad de equilibrio de un sólido a una temperatura fija.</p></article></div>
+<div class="callout warn"><strong>Distinción importante:</strong> rapidez de disolución y solubilidad no son lo mismo. Moler o agitar puede hacer que el soluto se disuelva más rápido sin aumentar la cantidad máxima que puede disolverse en equilibrio.</div>
+</section>
+
+<section class="section" id="curvas"><h2>2. ¿Cómo se interpreta una curva de solubilidad?</h2><p>La gráfica representa cómo cambia la solubilidad con la temperatura. El eje horizontal suele mostrar la temperatura (°C), y el vertical, la solubilidad (g de soluto/100 g de agua).</p>
+<div class="grid"><article class="card"><h3>Curva ascendente</h3><p>La solubilidad aumenta al elevar la temperatura. El nitrato de potasio (KNO₃) presenta un aumento marcado en el intervalo mostrado.</p></article><article class="card"><h3>Curva poco inclinada</h3><p>La solubilidad cambia poco con la temperatura. El cloruro de sodio (NaCl) es un ejemplo aproximado.</p></article><article class="card"><h3>Curva descendente</h3><p>Algunas sustancias se vuelven menos solubles al aumentar la temperatura. El sulfato de cerio(III) se suele usar como ejemplo de este comportamiento.</p></article></div>
+<canvas id="solChart" class="chart" width="1000" height="480" aria-label="Curvas de solubilidad de varias sales"></canvas>
+<div class="callout"><strong>Lectura por regiones:</strong> por debajo de una curva, la solución suele ser insaturada; sobre la curva, saturada; por encima, el punto representa una cantidad que excede el equilibrio y que podría corresponder a una solución sobresaturada si todo el soluto está disuelto. Si no lo está, habrá soluto sin disolver.</div>
+<p class="muted">Los datos dibujados son valores aproximados, seleccionados con fines didácticos. Las curvas reales dependen de la forma química, pureza y fuente de los datos; para trabajos de laboratorio o cálculos precisos, consulta tablas experimentales confiables.</p>
+<table><thead><tr><th>Temperatura (°C)</th><th>KNO₃</th><th>KCl</th><th>NaCl</th><th>Unidad</th></tr></thead><tbody>
+<tr><td>0</td><td>13,3</td><td>28,0</td><td>35,7</td><td rowspan="6">g de soluto / 100 g H₂O</td></tr>
+<tr><td>20</td><td>31,6</td><td>34,2</td><td>35,9</td></tr><tr><td>40</td><td>63,9</td><td>40,1</td><td>36,4</td></tr><tr><td>60</td><td>110</td><td>45,8</td><td>37,1</td></tr><tr><td>80</td><td>169</td><td>51,3</td><td>38,0</td></tr><tr><td>100</td><td>246</td><td>56,3</td><td>39,2</td></tr>
+</tbody></table>
+</section>
+
+<section class="section" id="simulador"><h2>3. Simulador de solubilidad y saturación</h2><p>Selecciona una sal, una temperatura y una masa de agua. Introduce la cantidad de soluto agregada para estimar si se disuelve por completo, si la solución llega a saturarse o cuánto queda sin disolver.</p>
+<div class="controls"><label for="salt">Soluto:</label><select id="salt"><option value="KNO3">Nitrato de potasio (KNO₃)</option><option value="KCl">Cloruro de potasio (KCl)</option><option value="NaCl">Cloruro de sodio (NaCl)</option></select><label for="simTemp">Temperatura:</label><input id="simTemp" type="number" min="0" max="100" value="40" style="width:90px"> °C<label for="waterMass">Agua:</label><input id="waterMass" type="number" min="1" max="5000" value="100" style="width:100px"> g<label for="soluteMass">Soluto añadido:</label><input id="soluteMass" type="number" min="0" max="5000" value="50" style="width:100px"> g<button id="simBtn">Calcular</button></div>
+<div id="simResult" class="result" aria-live="polite">Pulsa «Calcular» para analizar la mezcla.</div>
+<details><summary>¿Cómo se estima la solubilidad entre temperaturas tabuladas?</summary><p>El simulador interpola linealmente entre puntos de referencia de una tabla didáctica. Es una aproximación para aprender a leer curvas, no sustituye datos experimentales.</p></details>
+</section>
+
+<section class="section" id="calculos"><h2>4. Problemas de cristalización y cambio de temperatura</h2>
+<div class="grid"><article class="card"><h3>Problema A: saturación</h3><p>A 40 °C, la solubilidad aproximada del KNO₃ es 63,9 g por 100 g de agua. Si se agregan 50 g a 100 g de agua, ¿se disuelve todo?</p><details><summary>Ver solución</summary><p>Sí, porque 50 g es menor que 63,9 g. Bajo el modelo ideal, la solución queda insaturada.</p></details></article>
+<article class="card"><h3>Problema B: cristalización por enfriamiento</h3><p>Se prepara una solución saturada de KNO₃ con 100 g de agua a 60 °C y luego se enfría a 20 °C. ¿Cuánto soluto puede cristalizar?</p><details><summary>Ver solución</summary><p>A 60 °C pueden disolverse aproximadamente 110 g; a 20 °C, 31,6 g. Diferencia: 110 − 31,6 = <strong>78,4 g</strong> que podrían cristalizar si se alcanza el equilibrio y no hay pérdidas.</p></details></article>
+<article class="card"><h3>Problema C: evaporación del solvente</h3><p>Si se evapora parte del agua de una solución sin que se pierda soluto, la concentración aumenta. Si se supera la solubilidad a la temperatura existente, puede comenzar la cristalización.</p><details><summary>Ver solución</summary><p>La evaporación reduce la masa de solvente. El sistema puede llegar a saturarse y el exceso de soluto puede precipitar o cristalizar.</p></details></article></div>
+<div class="callout"><strong>Fórmula útil para enfriamiento:</strong> masa que puede cristalizar ≈ masa disuelta a la temperatura inicial − masa que puede permanecer disuelta a la temperatura final. Es válida para una solución inicialmente saturada, con la misma masa de agua y sin pérdidas ni reacciones.</div>
+</section>
+
+<section class="section" id="gases"><h2>5. Solubilidad de los gases</h2>
+<div class="grid"><article class="card"><h3>Efecto de la temperatura</h3><p>En muchos casos, al calentar el líquido disminuye la solubilidad de los gases. Por eso el agua caliente puede retener menos oxígeno disuelto que el agua fría.</p></article><article class="card"><h3>Efecto de la presión</h3><p>La ley de Henry describe, en condiciones apropiadas, que la concentración de un gas disuelto es proporcional a su presión parcial sobre el líquido: <span class="formula">C = k<sub>H</sub> · P</span>, con una convención de unidades definida para kH.</p></article><article class="card"><h3>Ejemplos ambientales</h3><p>El oxígeno disuelto es importante para peces y otros organismos. El calentamiento de cuerpos de agua puede reducir la disponibilidad de oxígeno y agravar otros impactos ambientales.</p></article></div>
+<div class="callout warn"><strong>Precaución con la ley de Henry:</strong> existen distintas convenciones para la constante kH. Antes de calcular, verifica si la constante relaciona concentración/presión o presión/concentración y utiliza unidades compatibles.</div>
+</section>
+
+<section class="section" id="agua"><h2>6. El ciclo del agua</h2><p>El ciclo hidrológico es el movimiento continuo del agua entre la superficie terrestre, el subsuelo y la atmósfera. La energía solar impulsa gran parte de la evaporación y la gravedad favorece la precipitación, la escorrentía y el flujo subterráneo.</p>
+<div class="cycle">
+<div class="step"><div class="num">1</div><h3>Evaporación</h3><p>El agua líquida pasa a vapor desde mares, lagos, ríos y suelos húmedos.</p></div>
+<div class="step"><div class="num">2</div><h3>Transpiración</h3><p>Las plantas liberan vapor de agua. Evaporación + transpiración forman la evapotranspiración.</p></div>
+<div class="step"><div class="num">3</div><h3>Condensación</h3><p>El vapor se enfría y forma gotas o cristales de hielo que componen las nubes.</p></div>
+<div class="step"><div class="num">4</div><h3>Transporte</h3><p>Los vientos desplazan vapor, nubes y humedad entre regiones.</p></div>
+<div class="step"><div class="num">5</div><h3>Precipitación</h3><p>El agua cae como lluvia, nieve o granizo, según las condiciones atmosféricas.</p></div>
+<div class="step"><div class="num">6</div><h3>Infiltración</h3><p>Parte del agua penetra el suelo y puede recargar acuíferos.</p></div>
+<div class="step"><div class="num">7</div><h3>Escorrentía</h3><p>El agua fluye sobre el terreno hacia quebradas, ríos, lagos y océanos.</p></div>
+<div class="step"><div class="num">8</div><h3>Almacenamiento</h3><p>Agua en océanos, lagos, nieve, glaciares, suelo y acuíferos. El ciclo no es una secuencia rígida: varias rutas ocurren en paralelo.</p></div>
+</div>
+<h3>Procesos de cambio de estado en el ciclo</h3>
+<table><thead><tr><th>Proceso</th><th>Cambio de estado</th><th>Energía</th><th>Ejemplo</th></tr></thead><tbody>
+<tr><td>Evaporación</td><td>Líquido → gas</td><td>Absorbe energía</td><td>Agua que pasa a vapor desde un lago</td></tr>
+<tr><td>Condensación</td><td>Gas → líquido</td><td>Libera energía</td><td>Formación de gotas en las nubes</td></tr>
+<tr><td>Congelación</td><td>Líquido → sólido</td><td>Libera energía</td><td>Formación de hielo o nieve</td></tr>
+<tr><td>Fusión</td><td>Sólido → líquido</td><td>Absorbe energía</td><td>Deshielo</td></tr>
+<tr><td>Sublimación</td><td>Sólido → gas</td><td>Absorbe energía</td><td>Hielo o nieve que pasa directamente a vapor</td></tr>
+<tr><td>Deposición</td><td>Gas → sólido</td><td>Libera energía</td><td>Formación de escarcha</td></tr>
+</tbody></table>
+<canvas id="waterCanvas" class="waterchart" width="1000" height="390" aria-label="Esquema del ciclo del agua"></canvas>
+<p class="muted">El esquema es conceptual, no está a escala. El ciclo real integra procesos atmosféricos, superficiales y subterráneos que interactúan.</p>
+</section>
+
+<section class="section" id="relacion"><h2>7. ¿Cómo se relacionan la solubilidad y el ciclo del agua?</h2>
+<div class="grid"><article class="card"><h3>Disolución y meteorización</h3><p>El agua de lluvia y el agua subterránea disuelven minerales de las rocas. La acidez, la temperatura, el tiempo de contacto y la composición del agua influyen en qué sustancias se movilizan.</p></article><article class="card"><h3>Evaporación y concentración</h3><p>Cuando el agua se evapora, las sales disueltas suelen permanecer en el líquido, por lo que aumenta su concentración. Si se supera la solubilidad, pueden precipitar o cristalizar.</p></article><article class="card"><h3>Salinas y evaporitas</h3><p>En cuencas con fuerte evaporación, ciertos iones pueden concentrarse y formar minerales como halita (NaCl) o yeso, cuando se alcanzan condiciones adecuadas de saturación.</p></article><article class="card"><h3>Temperatura y ecosistemas</h3><p>Los cambios de temperatura afectan la solubilidad de muchas sales y gases. Esto puede influir en la química del agua y en el oxígeno disponible para los organismos.</p></article></div>
+<div class="callout"><strong>Ejemplo integrador:</strong> el agua se infiltra y disuelve pequeñas cantidades de minerales; fluye hacia una cuenca cerrada; allí la evaporación elimina agua, concentra los iones y, si se alcanza la saturación, pueden precipitar minerales. El agua cambia de fase, pero las sales no se evaporan en condiciones ordinarias.</div>
+<h3>Actividad de aplicación</h3><p>En un recipiente hay agua salada. Se deja evaporar parte del agua a temperatura constante. ¿Qué es lo más probable si el proceso continúa?</p>
+<div class="controls"><select id="relationPick"><option value="">Elige una respuesta</option><option value="a">La concentración de sal disminuye continuamente.</option><option value="b">La concentración aumenta y, al alcanzar saturación, puede cristalizar sal.</option><option value="c">La sal se convierte necesariamente en vapor junto con el agua.</option></select><button id="relationBtn">Comprobar</button></div><div id="relationResult" class="result"></div>
+</section>
+
+<section class="section" id="evaluacion"><h2>8. Evaluación de comprensión</h2><p>Selecciona una respuesta en cada pregunta y pulsa «Calificar» para obtener retroalimentación.</p><form id="quiz">
+<div class="quizq"><strong>1. ¿Qué expresa una curva de solubilidad?</strong><div class="answers"><label><input type="radio" name="q1" value="a"> La rapidez con la que se agita una solución.</label><label><input type="radio" name="q1" value="b"> La cantidad máxima que puede disolverse en condiciones definidas.</label><label><input type="radio" name="q1" value="c"> La densidad de cualquier sustancia a todas las temperaturas.</label></div><div id="f1"></div></div>
+<div class="quizq"><strong>2. En una curva, un punto por debajo de la línea suele indicar una solución:</strong><div class="answers"><label><input type="radio" name="q2" value="a"> Insaturada</label><label><input type="radio" name="q2" value="b"> Sobresaturada necesariamente</label><label><input type="radio" name="q2" value="c"> En ebullición</label></div><div id="f2"></div></div>
+<div class="quizq"><strong>3. ¿Qué puede ocurrir al enfriar una solución saturada de una sal cuya solubilidad disminuye al enfriar?</strong><div class="answers"><label><input type="radio" name="q3" value="a"> El solvente desaparece instantáneamente.</label><label><input type="radio" name="q3" value="b"> La sal se transforma químicamente en agua.</label><label><input type="radio" name="q3" value="c"> Parte del soluto puede cristalizar.</label></div><div id="f3"></div></div>
+<div class="quizq"><strong>4. ¿Qué suele pasar con la solubilidad de muchos gases en agua al aumentar la temperatura?</strong><div class="answers"><label><input type="radio" name="q4" value="a"> Aumenta siempre de forma ilimitada.</label><label><input type="radio" name="q4" value="b"> Disminuye.</label><label><input type="radio" name="q4" value="c"> No puede cambiar.</label></div><div id="f4"></div></div>
+<div class="quizq"><strong>5. ¿Qué proceso del ciclo del agua forma gotas a partir del vapor?</strong><div class="answers"><label><input type="radio" name="q5" value="a"> Condensación</label><label><input type="radio" name="q5" value="b"> Evaporación</label><label><input type="radio" name="q5" value="c"> Infiltración</label></div><div id="f5"></div></div>
+<div class="quizq"><strong>6. ¿Qué efecto suele tener la evaporación de agua de una solución salina?</strong><div class="answers"><label><input type="radio" name="q6" value="a"> La sal siempre se evapora a la misma velocidad que el agua.</label><label><input type="radio" name="q6" value="b"> La solución se diluye.</label><label><input type="radio" name="q6" value="c"> Aumenta la concentración de las sales que permanecen disueltas.</label></div><div id="f6"></div></div>
+<div class="quizq"><strong>7. ¿Qué factor acelera la disolución, pero no necesariamente aumenta la solubilidad de equilibrio?</strong><div class="answers"><label><input type="radio" name="q7" value="a"> Agitación</label><label><input type="radio" name="q7" value="b"> Cambio de naturaleza química</label><label><input type="radio" name="q7" value="c"> Aumento de la presión parcial de un gas sobre el líquido</label></div><div id="f7"></div></div>
+<div class="quizq"><strong>8. ¿Qué describe mejor la infiltración?</strong><div class="answers"><label><input type="radio" name="q8" value="a"> Vapor que se convierte en gotas.</label><label><input type="radio" name="q8" value="b"> Agua que penetra en el suelo.</label><label><input type="radio" name="q8" value="c"> Sal que pasa directamente a gas.</label></div><div id="f8"></div></div>
+<div class="controls"><button type="button" id="grade">Calificar</button><button type="reset" class="secondary">Reiniciar</button></div><div id="score" class="result" aria-live="polite"></div></form></section>
+<section class="section"><h2>9. Resumen esencial</h2><ul><li>La solubilidad es una propiedad de equilibrio, no una medida de rapidez de disolución.</li><li>Las curvas permiten comparar sustancias y estimar cuánto soluto puede disolverse a distintas temperaturas.</li><li>El enfriamiento de una solución saturada puede causar cristalización si la solubilidad disminuye.</li><li>En muchos gases, la solubilidad disminuye al subir la temperatura y aumenta con la presión parcial.</li><li>El ciclo del agua mueve y transforma el agua, mientras los solutos pueden concentrarse, transportarse o precipitar.</li></ul><div class="callout"><strong>Pregunta de reflexión:</strong> ¿cómo podría una sequía prolongada modificar la concentración de sales de un lago poco profundo y qué consecuencias tendría para sus organismos?</div></section>
+</main><footer>Guía interactiva de Química · Dirección del proyecto: Alberto Luis Sánchez Flórez</footer>
+<script>
+const curves={
+ KNO3:[[0,13.3],[20,31.6],[40,63.9],[60,110],[80,169],[100,246]],
+ KCl:[[0,28],[20,34.2],[40,40.1],[60,45.8],[80,51.3],[100,56.3]],
+ NaCl:[[0,35.7],[20,35.9],[40,36.4],[60,37.1],[80,38],[100,39.2]],
+ Ce2SO43:[[0,10],[20,8],[40,5],[60,3],[80,2],[100,1]]
+};
+const colors={KNO3:'#37d49a',KCl:'#d3f36b',NaCl:'#80d9ff',Ce2SO43:'#ffbd69'};
+function interp(arr,t){if(t<=arr[0][0])return arr[0][1];for(let i=1;i<arr.length;i++){if(t<=arr[i][0]){let [t0,y0]=arr[i-1],[t1,y1]=arr[i];return y0+(y1-y0)*(t-t0)/(t1-t0)}}return arr[arr.length-1][1]}
+function drawSolChart(){let c=document.getElementById('solChart'),x=c.getContext('2d'),w=c.width,h=c.height,L=80,R=w-35,T=25,B=h-65;x.clearRect(0,0,w,h);x.font='16px system-ui';x.strokeStyle='#285342';x.fillStyle='#b4cfc1';for(let y=0;y<=250;y+=50){let py=B-y/260*(B-T);x.beginPath();x.moveTo(L,py);x.lineTo(R,py);x.stroke();x.fillText(y,L-48,py+5)}for(let t=0;t<=100;t+=20){let px=L+t/100*(R-L);x.beginPath();x.moveTo(px,T);x.lineTo(px,B);x.stroke();x.fillText(t+'°',px-15,B+26)}x.strokeStyle='#b4cfc1';x.beginPath();x.moveTo(L,T);x.lineTo(L,B);x.lineTo(R,B);x.stroke();x.fillStyle='#b4cfc1';x.fillText('Solubilidad (g/100 g H₂O)',L,18);x.fillText('Temperatura (°C)',R-170,h-17);Object.keys(curves).forEach(k=>{x.strokeStyle=colors[k];x.lineWidth=4;x.beginPath();curves[k].forEach((p,i)=>{let px=L+p[0]/100*(R-L),py=B-p[1]/260*(B-T);i?x.lineTo(px,py):x.moveTo(px,py)});x.stroke();let last=curves[k][curves[k].length-1],ly=B-last[1]/260*(B-T);x.fillStyle=colors[k];x.fillText(({KNO3:'KNO₃',KCl:'KCl',NaCl:'NaCl',Ce2SO43:'Ce₂(SO₄)₃'}[k]),R-125,ly-7)})}drawSolChart();
+document.getElementById('simBtn').addEventListener('click',()=>{let salt=document.getElementById('salt').value,t=Number(document.getElementById('simTemp').value),wm=Number(document.getElementById('waterMass').value),sm=Number(document.getElementById('soluteMass').value),out=document.getElementById('simResult');if(!Number.isFinite(t)||t<0||t>100||!Number.isFinite(wm)||wm<=0||!Number.isFinite(sm)||sm<0){out.textContent='Introduce una temperatura entre 0 y 100 °C, una masa de agua positiva y una masa de soluto no negativa.';out.className='result bad';return}let s=interp(curves[salt],t),max=s*wm/100,diss=Math.min(sm,max),left=Math.max(0,sm-max),state=sm<max?'insaturada':Math.abs(sm-max)<1e-8?'saturada':'se alcanza la saturación y queda soluto sin disolver';out.innerHTML='<strong>Solubilidad estimada:</strong> '+s.toFixed(2)+' g por 100 g de agua.<br><strong>Capacidad máxima estimada para '+wm+' g de agua:</strong> '+max.toFixed(2)+' g de soluto.<br><strong>Soluto añadido:</strong> '+sm.toFixed(2)+' g.<br><strong>Resultado:</strong> '+state+'.<br><strong>Puede disolverse:</strong> '+diss.toFixed(2)+' g.<br><strong>Queda sin disolver:</strong> '+left.toFixed(2)+' g.';out.className='result '+(left>0?'bad':'good')});
+document.getElementById('relationBtn').addEventListener('click',()=>{let v=document.getElementById('relationPick').value,o=document.getElementById('relationResult');o.textContent=v==='b'?'Correcto. Al perder solvente, la concentración aumenta; al llegar a saturación, puede comenzar la cristalización.':v?'No es correcto. El agua suele evaporarse mientras la sal permanece disuelta hasta que se alcance la saturación.':'Selecciona una opción.';o.className='result '+(v==='b'?'good':'bad')});
+function drawWater(){let c=document.getElementById('waterCanvas'),x=c.getContext('2d'),w=c.width,h=c.height;x.clearRect(0,0,w,h);x.font='bold 18px system-ui';x.fillStyle='#80d9ff';x.fillText('ATMÓSFERA',405,35);x.fillStyle='#b4cfc1';x.font='15px system-ui';x.fillText('Condensación → nubes',385,65);x.fillText('← Evaporación y transpiración',55,160);x.fillText('Precipitación ↓',730,160);x.fillStyle='#173d2c';x.beginPath();x.moveTo(0,275);x.quadraticCurveTo(150,240,280,280);x.quadraticCurveTo(420,310,570,275);x.quadraticCurveTo(750,230,1000,275);x.lineTo(1000,390);x.lineTo(0,390);x.fill();x.fillStyle='#12638a';x.beginPath();x.moveTo(0,320);x.quadraticCurveTo(120,305,230,330);x.quadraticCurveTo(300,355,405,335);x.lineTo(405,390);x.lineTo(0,390);x.fill();x.fillStyle='#80d9ff';x.beginPath();x.moveTo(670,320);x.quadraticCurveTo(790,295,1000,325);x.lineTo(1000,390);x.lineTo(670,390);x.fill();x.strokeStyle='#80d9ff';x.lineWidth=3;x.beginPath();x.moveTo(150,310);x.quadraticCurveTo(300,190,440,100);x.stroke();x.beginPath();x.moveTo(570,105);x.quadraticCurveTo(740,150,820,300);x.stroke();x.strokeStyle='#37d49a';x.beginPath();x.moveTo(465,330);x.quadraticCurveTo(530,350,600,340);x.stroke();x.fillStyle='#edf9f2';x.fillText('Río',80,365);x.fillText('Infiltración',460,365);x.fillText('Océano / lago',770,365);x.fillStyle='#d3f36b';x.fillText('Nubes',455,105);x.fillText('Vapor de agua ↑',90,205);x.fillText('Lluvia ↓',820,210);x.fillText('Escorrentía →',455,300)}drawWater();
+const answer={q1:'b',q2:'a',q3:'c',q4:'b',q5:'a',q6:'c',q7:'a',q8:'b'};const explanations={q1:'La curva expresa la cantidad máxima que puede disolverse en condiciones definidas.',q2:'Por debajo de la curva hay menos soluto que el máximo de equilibrio.',q3:'Al bajar la solubilidad, el exceso de soluto puede cristalizar.',q4:'La solubilidad de muchos gases disminuye al aumentar la temperatura.',q5:'La condensación transforma vapor en líquido.',q6:'Al perder agua, las sales que permanecen aumentan su concentración.',q7:'La agitación suele acelerar la disolución, no modificar el equilibrio final.',q8:'La infiltración es el paso del agua hacia el interior del suelo.'};document.getElementById('grade').addEventListener('click',()=>{let n=0;for(let i=1;i<=8;i++){let q='q'+i,s=document.querySelector('input[name="'+q+'"]:checked'),f=document.getElementById('f'+i);if(s&&s.value===answer[q]){n++;f.textContent='Correcto. '+explanations[q];f.className='good'}else{f.textContent='Respuesta correcta: '+({q1:'B',q2:'A',q3:'C',q4:'B',q5:'A',q6:'C',q7:'A',q8:'B'}[q])+'. '+explanations[q];f.className='bad'}}let sc=document.getElementById('score');sc.textContent='Resultado: '+n+'/8 ('+Math.round(n/8*100)+'%).';sc.className='result '+(n>=6?'good':'bad')});document.querySelector('#quiz').addEventListener('reset',()=>setTimeout(()=>{for(let i=1;i<=8;i++){let f=document.getElementById('f'+i);f.textContent='';f.className=''}document.getElementById('score').textContent=''},0));
+</script>
+<footer class="rumbo-foot">
+  <div>
+    <a href="../index.html">RUMBO EDUCA</a>
+    <a href="index.html">Ciencias</a>
+    <a href="../resiliencia/">Resiliencia</a>
+    <a href="../orientacion/">Vocacional</a>
+    <a href="../admin/">Admin</a>
+  </div>
+  <div class="sub">Laboratorio de aprendizaje y orientación · Una iniciativa de OAKTREESKY</div>
+</footer>
+
+</body></html>

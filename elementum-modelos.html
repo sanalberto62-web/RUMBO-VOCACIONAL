@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123D32">
+<title>Elementum · Modelos atómicos | RUMBO PLAY</title>
+<style>
+:root{
+  --green:#123D32;--green2:#1e5a49;--gold:#b69a5d;--gold2:#d4b56a;
+  --ink:#1d2a25;--muted:#637169;--line:#e2e7e1;--mint:#e8f0eb;
+  --bg:#0b1a16;--panel:#122a24;--panel2:#1a3830;--danger:#c94c4c;--ok:#2d9d6c;
+  --white:#f6f5f0;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 20% 0%,#1a3d34 0%,var(--bg) 50%);color:var(--white);min-height:100vh;line-height:1.45}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none}
+.rumbo-topbar{background:var(--green);color:#e9f1eb;font-size:.75rem;text-align:center;padding:6px 12px}
+.rumbo-nav{background:rgba(18,61,50,.95);border-bottom:1px solid rgba(182,154,93,.25);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
+.rumbo-nav-inner{max-width:960px;margin:0 auto;padding:0 14px;min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:.92rem;color:#f4e6bd}
+.brand .mark{width:30px;height:30px;border-radius:9px;background:var(--gold);color:var(--green);display:grid;place-items:center;font-size:.85rem}
+.brand .tag{display:block;font-size:.55rem;color:#9bb5a8;letter-spacing:.08em;font-weight:650}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{font-size:.78rem;font-weight:650;padding:6px 10px;border-radius:999px;color:#c5d9ce}
+.nav-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.wrap{max-width:960px;margin:0 auto;padding:16px 14px 40px}
+
+/* HUD */
+.hud{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;background:var(--panel);border:1px solid rgba(182,154,93,.2);border-radius:14px;padding:12px 14px;margin-bottom:14px}
+.hud .title{font-weight:800;font-size:1rem;color:var(--gold2)}
+.hud .title span{display:block;font-size:.7rem;font-weight:600;color:#8fad9f;margin-top:2px}
+.stat{text-align:center;min-width:64px}
+.stat b{display:block;font-size:1.15rem;color:#fff;font-variant-numeric:tabular-nums}
+.stat small{font-size:.65rem;color:#8fad9f;text-transform:uppercase;letter-spacing:.06em}
+.timer.warn{color:#ffb347}
+.timer.danger{color:#ff6b6b}
+
+/* Screens */
+.screen{display:none}
+.screen.active{display:block}
+.card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px 18px;margin-bottom:14px}
+.card h1{margin:0 0 8px;font-size:1.45rem;color:var(--gold2)}
+.card h2{margin:0 0 8px;font-size:1.15rem;color:#e8f0eb}
+.card p{margin:0 0 12px;color:#b4c9be;font-size:.95rem}
+.pillrow{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.pill{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:rgba(182,154,93,.15);color:var(--gold2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 18px;border-radius:999px;font-weight:750;font-size:.9rem;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--gold);color:var(--green)}
+.btn-primary:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:#e8f0eb}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+.btn-ok{background:var(--ok);color:#fff}
+.btn-danger{background:var(--danger);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+/* Challenge */
+.mission{background:rgba(182,154,93,.08);border-left:3px solid var(--gold);padding:12px 14px;border-radius:0 12px 12px 0;margin-bottom:14px}
+.mission strong{color:var(--gold2)}
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0}
+.ev-card{background:var(--panel2);border:2px solid transparent;border-radius:12px;padding:12px;cursor:pointer;transition:border .15s,transform .15s}
+.ev-card:hover{border-color:rgba(182,154,93,.4)}
+.ev-card.selected{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.ev-card.correct{border-color:var(--ok)}
+.ev-card.wrong{border-color:var(--danger);opacity:.7}
+.ev-card h3{margin:0 0 4px;font-size:.88rem;color:#e8f0eb}
+.ev-card p{margin:0;font-size:.78rem;color:#8fad9f}
+.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:12px 0}
+.model-btn{background:var(--panel2);border:2px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 10px;text-align:center;color:#e8f0eb;font-weight:700;font-size:.85rem;transition:all .15s}
+.model-btn:hover{border-color:var(--gold)}
+.model-btn.selected{border-color:var(--gold);background:rgba(182,154,93,.15);color:var(--gold2)}
+.model-btn .icon{font-size:1.6rem;display:block;margin-bottom:6px}
+.feedback{padding:12px 14px;border-radius:12px;margin-top:12px;font-size:.9rem;display:none}
+.feedback.show{display:block}
+.feedback.ok{background:rgba(45,157,108,.2);border:1px solid var(--ok);color:#a8e6c5}
+.feedback.bad{background:rgba(201,76,76,.15);border:1px solid var(--danger);color:#f0b0b0}
+.progress-bar{height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin:10px 0 4px}
+.progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green2),var(--gold));width:0%;transition:width .35s}
+.atom-stage{height:160px;background:radial-gradient(circle at 50% 50%,#1e4a3e 0%,var(--panel2) 70%);border-radius:14px;position:relative;overflow:hidden;margin:12px 0;border:1px solid rgba(255,255,255,.06)}
+.atom-stage .nucleus{position:absolute;left:50%;top:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffd166,#c94c4c);box-shadow:0 0 16px rgba(255,180,50,.5)}
+.atom-stage .electron{position:absolute;width:10px;height:10px;border-radius:50%;background:#51e0dc;box-shadow:0 0 8px #51e0dc}
+.atom-stage .orbit{position:absolute;left:50%;top:50%;border:1px solid rgba(81,224,220,.25);border-radius:50%;transform:translate(-50%,-50%)}
+.score-pop{position:fixed;pointer-events:none;font-weight:900;font-size:1.2rem;color:var(--gold2);z-index:100;animation:pop .9s ease-out forwards}
+@keyframes pop{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-40px) scale(1.2)}}
+.leader{width:100%;border-collapse:collapse;font-size:.88rem}
+.leader th,.leader td{padding:8px 10px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06)}
+.leader th{color:#8fad9f;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+.leader tr.you{background:rgba(182,154,93,.12)}
+.class-panel{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.hud{grid-template-columns:1fr 1fr;}.class-panel{grid-template-columns:1fr}.nav-links a:not(:last-child){display:none}}
+.hidden{display:none!important}
+footer.rumbo-foot{background:#0c2d25;color:#b8c9be;padding:16px;text-align:center;font-size:.78rem;margin-top:24px}
+footer.rumbo-foot a{color:#e9f1eb;margin:0 8px;font-weight:650}
+</style>
+</head>
+<body>
+<div class="rumbo-topbar">RUMBO PLAY · Elementum · Laboratorio competitivo · OAKTREESKY</div>
+<nav class="rumbo-nav">
+  <div class="rumbo-nav-inner">
+    <a class="brand" href="../index.html">
+      <span class="mark">⚛</span>
+      <span>ELEMENTUM<span class="tag">MUNDO 1 · MODELOS ATÓMICOS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../ciencias/">Ciencias</a>
+      <a href="../ciencias/modelos-atomicos.html">Guía</a>
+      <a href="../index.html">Portada</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hud" id="hud">
+    <div class="title">Modelos atómicos<span id="hudSub">Elige modo de juego</span></div>
+    <div class="stat"><b id="scoreVal">0</b><small>Puntos</small></div>
+    <div class="stat"><b id="comboVal">×1</b><small>Combo</small></div>
+    <div class="stat"><b class="timer" id="timerVal">—</b><small>Tiempo</small></div>
+  </div>
+
+  <!-- SCREEN: HOME -->
+  <section class="screen active" id="sc-home">
+    <div class="card">
+      <h1>⚛ Elementum · Mundo 1</h1>
+      <p>Las evidencias experimentales están desordenadas. Tu misión: asociar cada hallazgo histórico con el modelo atómico correcto y construir la secuencia de la ciencia.</p>
+      <div class="pillrow">
+        <span class="pill">Arcade competitivo</span>
+        <span class="pill">Puntos + combo</span>
+        <span class="pill">Modo clase</span>
+        <span class="pill">10°–11°</span>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" type="button" data-mode="solo">Jugar solo →</button>
+        <button class="btn btn-ghost" type="button" data-mode="clase">Modo clase (docente)</button>
+        <button class="btn btn-ghost" type="button" id="btnRanking">Ver ranking local</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Cómo se gana</h2>
+      <p>Responde evidencias y ordena modelos. Acierto = puntos. Racha = combo ×2, ×3… Error = se rompe el combo. En modo crono, más velocidad = más bonus.</p>
+    </div>
+  </section>
+
+  <!-- SCREEN: CLASS SETUP -->
+  <section class="screen" id="sc-clase">
+    <div class="card">
+      <h1>Modo clase</h1>
+      <p>El docente configura la ronda. Los estudiantes juegan en sus dispositivos con el mismo código de sala (local, sin servidor).</p>
+      <div class="class-panel">
+        <div>
+          <label style="font-size:.8rem;color:#8fad9f">Nombre del jugador</label>
+          <input id="playerName" type="text" placeholder="Tu nombre o equipo" maxlength="20" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:var(--panel2);color:#fff;margin-top:6px">
+        </div>
+        <div>
+          <label style="font-size:.8rem;color:#8fad9f">Código de sala (opcional)</label>
+          <input id="roomCode" type="text" placeholder="ej. 10A" maxlength="8" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:var(--panel2);color:#fff;margin-top:6px">
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" type="button" id="btnStartClass">Empezar ronda →</button>
+        <button class="btn btn-ghost" type="button" data-back="home">← Volver</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN: GAME -->
+  <section class="screen" id="sc-game">
+    <div class="progress-bar"><i id="progBar"></i></div>
+    <div class="card">
+      <div class="mission" id="missionBox"><strong>Misión:</strong> <span id="missionText"></span></div>
+      <div class="atom-stage" id="atomStage" aria-hidden="true"></div>
+      <div id="challengeArea"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="actions" id="gameActions"></div>
+    </div>
+  </section>
+
+  <!-- SCREEN: RESULT -->
+  <section class="screen" id="sc-result">
+    <div class="card">
+      <h1 id="resultTitle">Ronda terminada</h1>
+      <p id="resultMsg"></p>
+      <div class="pillrow" id="resultPills"></div>
+      <div class="actions">
+        <button class="btn btn-primary" type="button" data-mode="solo">Jugar de nuevo</button>
+        <button class="btn btn-ghost" type="button" data-back="home">Menú</button>
+        <button class="btn btn-ghost" type="button" id="btnSaveScore">Guardar en ranking</button>
+      </div>
+    </div>
+    <div class="card" id="rankingCard">
+      <h2>Ranking local (este navegador)</h2>
+      <table class="leader"><thead><tr><th>#</th><th>Jugador</th><th>Puntos</th><th>Modo</th></tr></thead><tbody id="rankBody"></tbody></table>
+    </div>
+  </section>
+</div>
+
+<footer class="rumbo-foot">
+  <a href="../index.html">RUMBO EDUCA</a>
+  <a href="../ciencias/modelos-atomicos.html">Guía modelos atómicos</a>
+  <a href="../ciencias/">Ciencias</a>
+  <div style="opacity:.7;margin-top:6px;font-size:.72rem">Elementum · Prototipo jugable · Acceso libre</div>
+</footer>
+
+<script>
+(function(){
+  const STORAGE_RANK = 'elementum_rank_v1';
+  const TOTAL_ROUNDS = 6;
+
+  const EVIDENCES = [
+    {
+      id: 'dalton',
+      text: 'La materia se combina en proporciones fijas. Los átomos son esferas indivisibles y macizas.',
+      model: 'dalton',
+      hint: 'Modelo de bolas de billar (1803).'
+    },
+    {
+      id: 'thomson',
+      text: 'Rayos catódicos desviados por campos eléctricos: existen cargas negativas dentro del átomo.',
+      model: 'thomson',
+      hint: 'Modelo del “pudín de pasas”.'
+    },
+    {
+      id: 'rutherford',
+      text: 'Partículas alfa rebotan hacia atrás al bombardear una lámina de oro: hay un núcleo denso y positivo.',
+      model: 'rutherford',
+      hint: 'Átomo casi vacío con núcleo central.'
+    },
+    {
+      id: 'bohr',
+      text: 'Espectros de líneas del hidrógeno: los electrones solo ocupan órbitas con energías discretas.',
+      model: 'bohr',
+      hint: 'Órbitas cuantizadas.'
+    },
+    {
+      id: 'quantum',
+      text: 'No se puede conocer a la vez posición y momento con precisión total; se hablan de orbitales y nubes de probabilidad.',
+      model: 'quantum',
+      hint: 'Modelo mecanocuántico / orbitales.'
+    },
+    {
+      id: 'order',
+      type: 'order',
+      text: 'Ordena los modelos de más antiguo a más reciente.',
+      order: ['dalton','thomson','rutherford','bohr','quantum']
+    }
+  ];
+
+  const MODELS = {
+    dalton: { name: 'Dalton', icon: '⚫', desc: 'Esfera maciza indivisible' },
+    thomson: { name: 'Thomson', icon: '🍪', desc: 'Pudín de pasas' },
+    rutherford: { name: 'Rutherford', icon: '◎', desc: 'Núcleo + vacío' },
+    bohr: { name: 'Bohr', icon: '🪐', desc: 'Órbitas cuantizadas' },
+    quantum: { name: 'Cuántico', icon: '☁️', desc: 'Orbitales / probabilidad' }
+  };
+
+  let state = {
+    mode: 'solo',
+    player: 'Jugador',
+    room: '',
+    round: 0,
+    score: 0,
+    combo: 1,
+    correct: 0,
+    wrong: 0,
+    timeLeft: 0,
+    timerId: null,
+    queue: [],
+    locked: false
+  };
+
+  const $ = (s, el=document) => el.querySelector(s);
+  const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+
+  function show(id){
+    $$('.screen').forEach(s => s.classList.remove('active'));
+    $('#sc-'+id).classList.add('active');
+  }
+
+  function updateHUD(){
+    $('#scoreVal').textContent = state.score;
+    $('#comboVal').textContent = '×' + state.combo;
+    $('#hudSub').textContent = state.mode === 'clase'
+      ? (state.player + (state.room ? ' · Sala '+state.room : ''))
+      : 'Modo solo · Ronda ' + Math.min(state.round+1, TOTAL_ROUNDS) + '/' + TOTAL_ROUNDS;
+    const t = $('#timerVal');
+    if (state.mode === 'clase' || state.timeLeft > 0){
+      t.textContent = state.timeLeft + 's';
+      t.classList.toggle('warn', state.timeLeft <= 15 && state.timeLeft > 5);
+      t.classList.toggle('danger', state.timeLeft <= 5);
+    } else {
+      t.textContent = '—';
+      t.classList.remove('warn','danger');
+    }
+    const pct = (state.round / TOTAL_ROUNDS) * 100;
+    $('#progBar').style.width = pct + '%';
+  }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]] = [a[j],a[i]];
+    }
+    return a;
+  }
+
+  function startGame(mode){
+    clearInterval(state.timerId);
+    state.mode = mode;
+    state.round = 0;
+    state.score = 0;
+    state.combo = 1;
+    state.correct = 0;
+    state.wrong = 0;
+    state.locked = false;
+    state.queue = shuffle(EVIDENCES);
+    if (mode === 'clase'){
+      state.timeLeft = 90;
+      state.timerId = setInterval(()=>{
+        state.timeLeft--;
+        updateHUD();
+        if (state.timeLeft <= 0){
+          clearInterval(state.timerId);
+          endGame(true);
+        }
+      },1000);
+    } else {
+      state.timeLeft = 0;
+    }
+    show('game');
+    nextRound();
+  }
+
+  function nextRound(){
+    if (state.round >= TOTAL_ROUNDS){
+      endGame(false);
+      return;
+    }
+    state.locked = false;
+    const item = state.queue[state.round];
+    renderChallenge(item);
+    drawAtom(item.model || 'rutherford');
+    updateHUD();
+  }
+
+  function drawAtom(model){
+    const stage = $('#atomStage');
+    stage.innerHTML = '';
+    const nuc = document.createElement('div');
+    nuc.className = 'nucleus';
+    stage.appendChild(nuc);
+    if (model === 'dalton'){
+      nuc.style.width = '48px'; nuc.style.height = '48px';
+      nuc.style.margin = '-24px 0 0 -24px';
+      nuc.style.background = 'radial-gradient(circle at 30% 30%,#888,#333)';
+      return;
+    }
+    if (model === 'thomson'){
+      for(let i=0;i<6;i++){
+        const e = document.createElement('div');
+        e.className = 'electron';
+        const ang = (i/6)*Math.PI*2;
+        e.style.left = (50 + 28*Math.cos(ang)) + '%';
+        e.style.top = (50 + 22*Math.sin(ang)) + '%';
+        e.style.margin = '-5px 0 0 -5px';
+        stage.appendChild(e);
+      }
+      nuc.style.background = 'radial-gradient(circle at 30% 30%,#ffd166,#e8c96a)';
+      return;
+    }
+    // orbits
+    const orbits = model === 'bohr' ? [36,58] : model === 'quantum' ? [40,62] : [48];
+    orbits.forEach((r,i)=>{
+      const o = document.createElement('div');
+      o.className = 'orbit';
+      o.style.width = o.style.height = (r*2) + 'px';
+      stage.appendChild(o);
+      const e = document.createElement('div');
+      e.className = 'electron';
+      const ang = i * 1.2;
+      e.style.left = '50%';
+      e.style.top = '50%';
+      e.style.transform = `translate(-50%,-50%) translate(${r*Math.cos(ang)}px, ${r*Math.sin(ang)}px)`;
+      if (model === 'quantum') e.style.opacity = '0.55';
+      stage.appendChild(e);
+    });
+  }
+
+  function renderChallenge(item){
+    const area = $('#challengeArea');
+    const actions = $('#gameActions');
+    const fb = $('#feedback');
+    fb.className = 'feedback';
+    fb.textContent = '';
+    actions.innerHTML = '';
+
+    if (item.type === 'order'){
+      $('#missionText').textContent = item.text;
+      const order = shuffle(item.order);
+      area.innerHTML = '<p style="color:#8fad9f;font-size:.85rem;margin:0 0 8px">Toca en orden: del más antiguo al más reciente.</p><div class="models" id="orderPick"></div><p id="orderPreview" style="font-size:.85rem;color:var(--gold2)"></p>';
+      const picked = [];
+      order.forEach(key=>{
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'model-btn';
+        b.innerHTML = `<span class="icon">${MODELS[key].icon}</span>${MODELS[key].name}`;
+        b.addEventListener('click', ()=>{
+          if (state.locked) return;
+          if (picked.includes(key)) return;
+          picked.push(key);
+          b.classList.add('selected');
+          $('#orderPreview').textContent = picked.map(k=>MODELS[k].name).join(' → ');
+          if (picked.length === item.order.length){
+            const ok = picked.every((k,i)=>k === item.order[i]);
+            resolveAnswer(ok, ok ? '¡Secuencia histórica correcta!' : 'Orden incorrecto. Revisa la línea del tiempo: Dalton → Thomson → Rutherford → Bohr → Cuántico.');
+          }
+        });
+        $('#orderPick').appendChild(b);
+      });
+      return;
+    }
+
+    $('#missionText').textContent = '¿Qué modelo explica mejor esta evidencia?';
+    area.innerHTML = `<div class="ev-card selected" style="cursor:default;margin-bottom:12px"><h3>Evidencia experimental</h3><p style="color:#c5d9ce;font-size:.92rem;margin-top:6px">${item.text}</p></div><div class="models" id="modelPick"></div>`;
+    Object.keys(MODELS).forEach(key=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'model-btn';
+      b.innerHTML = `<span class="icon">${MODELS[key].icon}</span>${MODELS[key].name}<div style="font-weight:500;font-size:.68rem;color:#8fad9f;margin-top:4px">${MODELS[key].desc}</div>`;
+      b.addEventListener('click', ()=>{
+        if (state.locked) return;
+        $$('.model-btn').forEach(x=>x.classList.remove('selected'));
+        b.classList.add('selected');
+        const ok = key === item.model;
+        resolveAnswer(ok, ok ? ('Correcto. ' + item.hint) : ('No del todo. ' + item.hint + ' Modelo esperado: ' + MODELS[item.model].name + '.'));
+      });
+      $('#modelPick').appendChild(b);
+    });
+  }
+
+  function resolveAnswer(ok, msg){
+    state.locked = true;
+    const fb = $('#feedback');
+    fb.className = 'feedback show ' + (ok ? 'ok' : 'bad');
+    fb.textContent = msg;
+
+    if (ok){
+      const base = 100;
+      const points = base * state.combo + (state.mode === 'clase' ? Math.min(50, state.timeLeft) : 0);
+      state.score += points;
+      state.correct++;
+      state.combo = Math.min(state.combo + 1, 5);
+      popScore('+' + points);
+    } else {
+      state.wrong++;
+      state.combo = 1;
+      state.score = Math.max(0, state.score - 20);
+    }
+    updateHUD();
+
+    const actions = $('#gameActions');
+    actions.innerHTML = '';
+    const next = document.createElement('button');
+    next.type = 'button';
+    next.className = 'btn btn-primary';
+    next.textContent = state.round + 1 >= TOTAL_ROUNDS ? 'Ver resultado →' : 'Siguiente reto →';
+    next.addEventListener('click', ()=>{
+      state.round++;
+      nextRound();
+    });
+    actions.appendChild(next);
+  }
+
+  function popScore(text){
+    const el = document.createElement('div');
+    el.className = 'score-pop';
+    el.textContent = text;
+    el.style.left = (50 + Math.random()*20) + '%';
+    el.style.top = '40%';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),900);
+  }
+
+  function endGame(timeout){
+    clearInterval(state.timerId);
+    show('result');
+    const stars = state.correct >= 5 ? '★★★' : state.correct >= 3 ? '★★☆' : '★☆☆';
+    $('#resultTitle').textContent = timeout ? '¡Tiempo agotado!' : '¡Misión completada!';
+    $('#resultMsg').textContent = `${state.player}: ${state.score} puntos · ${state.correct}/${TOTAL_ROUNDS} aciertos · ${state.wrong} errores. ${stars}`;
+    $('#resultPills').innerHTML = `
+      <span class="pill">${state.mode === 'clase' ? 'Modo clase' : 'Modo solo'}</span>
+      <span class="pill">Combo máx. usado</span>
+      <span class="pill">Modelos atómicos</span>`;
+    renderRanking();
+  }
+
+  function loadRank(){
+    try{ return JSON.parse(localStorage.getItem(STORAGE_RANK)||'[]'); }catch(e){ return []; }
+  }
+  function saveRank(list){
+    localStorage.setItem(STORAGE_RANK, JSON.stringify(list.slice(0,15)));
+  }
+  function renderRanking(){
+    const list = loadRank().sort((a,b)=>b.score-a.score);
+    const body = $('#rankBody');
+    body.innerHTML = list.length ? list.map((r,i)=>`<tr class="${r.name===state.player&&r.score===state.score?'you':''}"><td>${i+1}</td><td>${escapeHtml(r.name)}</td><td>${r.score}</td><td>${r.mode}</td></tr>`).join('') : '<tr><td colspan="4">Aún no hay puntuaciones guardadas.</td></tr>';
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  // Events
+  $$('[data-mode]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const mode = btn.getAttribute('data-mode');
+      if (mode === 'clase'){
+        show('clase');
+        return;
+      }
+      state.player = 'Jugador';
+      startGame('solo');
+    });
+  });
+  $$('[data-back]').forEach(btn=>{
+    btn.addEventListener('click', ()=> show(btn.getAttribute('data-back')));
+  });
+  $('#btnStartClass').addEventListener('click', ()=>{
+    state.player = ($('#playerName').value.trim() || 'Equipo');
+    state.room = ($('#roomCode').value.trim() || '');
+    startGame('clase');
+  });
+  $('#btnRanking').addEventListener('click', ()=>{
+    show('result');
+    $('#resultTitle').textContent = 'Ranking local';
+    $('#resultMsg').textContent = 'Mejores puntuaciones guardadas en este navegador.';
+    $('#resultPills').innerHTML = '';
+    renderRanking();
+  });
+  $('#btnSaveScore').addEventListener('click', ()=>{
+    const list = loadRank();
+    list.push({ name: state.player, score: state.score, mode: state.mode, t: Date.now() });
+    saveRank(list);
+    renderRanking();
+    $('#btnSaveScore').textContent = '✓ Guardado';
+    $('#btnSaveScore').disabled = true;
+  });
+
+  updateHUD();
+})();
+</script>
+</body>
+</html>

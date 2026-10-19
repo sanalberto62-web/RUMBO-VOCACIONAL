@@ -1,0 +1,7 @@
+RUMBO EDUCA - PUBLICACION EN GITHUB PAGES
+
+Este paquete contiene el sitio completo. NO subas el ZIP tal cual: primero descomprímelo en tu computador.
+Después, en el repositorio RUMBO-VOCACIONAL, usa Add file > Upload files y sube los ARCHIVOS Y CARPETAS que están dentro de esta carpeta, a la RAÍZ del repositorio.
+Cuando GitHub pregunte por reemplazar archivos existentes, reemplaza index.html de la RAÍZ y acepta actualizar archivos/carpetas que coincidan. No borres el repositorio.
+La raíz del paquete contiene index.html, orientacion/, resiliencia/, ciencias/, play/, admin/ y mision-laboratorio/.
+Mantén la configuración de GitHub Pages en Deploy from a branch > main > /(root).
